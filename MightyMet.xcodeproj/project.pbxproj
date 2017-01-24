@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3914684A1E34884800CFBB5D /* MightyMetUI.swift */; };
+		39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39359D101E369EB6004D4CC0 /* Metronome.swift */; };
 		39628C171E3091A300900912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C161E3091A300900912 /* AppDelegate.swift */; };
 		39628C191E3091A300900912 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C181E3091A300900912 /* ViewController.swift */; };
 		39628C1C1E3091A300900912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1A1E3091A300900912 /* Main.storyboard */; };
 		39628C1E1E3091A300900912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1D1E3091A300900912 /* Assets.xcassets */; };
 		39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1F1E3091A300900912 /* LaunchScreen.storyboard */; };
+		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
+		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
+		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
+		3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63508F748E1C94EE753011F /* Pods_MightyMet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3914684A1E34884800CFBB5D /* MightyMetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MightyMetUI.swift; sourceTree = "<group>"; };
+		39359D101E369EB6004D4CC0 /* Metronome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		39628C131E3091A300900912 /* MightyMet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MightyMet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39628C161E3091A300900912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39628C181E3091A300900912 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,12 @@
 		39628C1D1E3091A300900912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39628C201E3091A300900912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39628C221E3091A300900912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
+		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
+		65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.release.xcconfig"; sourceTree = "<group>"; };
+		9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.debug.xcconfig"; sourceTree = "<group>"; };
+		A63508F748E1C94EE753011F /* Pods_MightyMet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MightyMet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39359D0F1E369E9F004D4CC0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				39359D101E369EB6004D4CC0 /* Metronome.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		39628C0A1E3091A300900912 = {
 			isa = PBXGroup;
 			children = (
 				39628C151E3091A300900912 /* MightyMet */,
 				39628C141E3091A300900912 /* Products */,
+				A90D891B377E0FC84F669AA5 /* Pods */,
+				A76D51208FAE05FC0C9F3806 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +79,9 @@
 		39628C151E3091A300900912 /* MightyMet */ = {
 			isa = PBXGroup;
 			children = (
+				39359D0F1E369E9F004D4CC0 /* Classes */,
+				39DC7C461E355D6000E0B849 /* UIClasses */,
+				39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */,
 				39628C161E3091A300900912 /* AppDelegate.swift */,
 				39628C181E3091A300900912 /* ViewController.swift */,
 				39628C1A1E3091A300900912 /* Main.storyboard */,
@@ -64,6 +92,33 @@
 			path = MightyMet;
 			sourceTree = "<group>";
 		};
+		39DC7C461E355D6000E0B849 /* UIClasses */ = {
+			isa = PBXGroup;
+			children = (
+				3914684A1E34884800CFBB5D /* MightyMetUI.swift */,
+				39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */,
+				39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */,
+			);
+			name = UIClasses;
+			sourceTree = "<group>";
+		};
+		A76D51208FAE05FC0C9F3806 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A63508F748E1C94EE753011F /* Pods_MightyMet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A90D891B377E0FC84F669AA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */,
+				65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39628C251E3091A300900912 /* Build configuration list for PBXNativeTarget "MightyMet" */;
 			buildPhases = (
+				E4BB5C109F65694CDD3C2A03 /* [CP] Check Pods Manifest.lock */,
 				39628C0F1E3091A300900912 /* Sources */,
 				39628C101E3091A300900912 /* Frameworks */,
 				39628C111E3091A300900912 /* Resources */,
+				D4D77C6C2FDF480B66A76055 /* [CP] Embed Pods Frameworks */,
+				D422001A9AF8CC46D111B338 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */,
+				39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */,
 				39628C1E1E3091A300900912 /* Assets.xcassets in Resources */,
 				39628C1C1E3091A300900912 /* Main.storyboard in Resources */,
 			);
@@ -132,12 +191,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D422001A9AF8CC46D111B338 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4D77C6C2FDF480B66A76055 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4BB5C109F65694CDD3C2A03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		39628C0F1E3091A300900912 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */,
+				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
 				39628C191E3091A300900912 /* ViewController.swift in Sources */,
+				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
+				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
 				39628C171E3091A300900912 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +370,7 @@
 		};
 		39628C261E3091A300900912 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4L5PVTT36;
@@ -272,6 +384,7 @@
 		};
 		39628C271E3091A300900912 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4L5PVTT36;
@@ -302,6 +415,7 @@
 				39628C271E3091A300900912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
