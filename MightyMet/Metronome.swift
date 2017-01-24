@@ -13,7 +13,7 @@ class Metronome {
     
     var isMetOn: Bool = false
     var frequency: Double = 60.0
-    var beepHerz: Double = 480.0
+    var beepHerz: Double = 640.0
     var generator: AKOperationGenerator!
     
     func generate() {
@@ -24,10 +24,12 @@ class Metronome {
             // let count = met.count(maximum: 4, looping: true)
             
             let beep = AKOperation.sineWave(frequency: parameters[1])
+            // TODO: Add some more sound options against the sinewave: bitcrush, stereo, etc.
             
             let beeps = beep.triggeredWithEnvelope(
                 trigger: met,
                 attack: 0.01, hold: 0, release: 0.05)
+            
             return beeps
         }
         
@@ -45,8 +47,13 @@ class Metronome {
     }
     
     func setBeepHerz(_ value: Double) {
-        self.beepHerz = value
-        generator.parameters[1] = value
+        
+        var calcHertx: Double
+        let difference = 640.00 - 180.00
+        calcHertx = value + difference
+        
+        self.beepHerz = calcHertx
+        generator.parameters[1] = calcHertx
     }
     
     func getFrequency() -> Double {

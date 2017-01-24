@@ -29,16 +29,27 @@
                                     <constraint firstAttribute="height" constant="301" id="S8f-v4-5Hg"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-Tt-WCh" customClass="HertzSelectorView" customModule="MightyMet">
+                                <rect key="frame" x="98.5" y="434" width="178" height="178"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="HKb-Dd-1Ke"/>
+                                    <constraint firstAttribute="height" constant="178" id="Zf5-pN-m3G"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="A38-uT-bri" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="73" id="Uf1-a0-eCf"/>
                             <constraint firstItem="A38-uT-bri" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fMq-z9-okD"/>
+                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="40" id="oLH-iT-EBl"/>
+                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pcr-93-Dw8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BPMSelector" destination="A38-uT-bri" id="j22-lO-QiM"/>
+                        <outlet property="HertzSelector" destination="WAx-Tt-WCh" id="Xn3-SO-lV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

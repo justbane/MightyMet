@@ -15,6 +15,7 @@
 		39628C1E1E3091A300900912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1D1E3091A300900912 /* Assets.xcassets */; };
 		39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1F1E3091A300900912 /* LaunchScreen.storyboard */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
+		39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
 		3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63508F748E1C94EE753011F /* Pods_MightyMet.framework */; };
@@ -31,6 +32,7 @@
 		39628C201E3091A300900912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39628C221E3091A300900912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HertzSelectorView.swift; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
 		65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				3914684A1E34884800CFBB5D /* MightyMetUI.swift */,
 				39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */,
 				39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */,
+				39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */,
 			);
 			name = UIClasses;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
 				39628C191E3091A300900912 /* ViewController.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
+				39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
 				39628C171E3091A300900912 /* AppDelegate.swift in Sources */,
 			);
