@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A38-uT-bri" customClass="BPMSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="43.5" y="93" width="288" height="301"/>
+                                <rect key="frame" x="32.5" y="93" width="310" height="310"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="90R-mN-W4r"/>
-                                    <constraint firstAttribute="height" constant="301" id="S8f-v4-5Hg"/>
+                                    <constraint firstAttribute="width" constant="310" id="90R-mN-W4r"/>
+                                    <constraint firstAttribute="height" constant="310" id="S8f-v4-5Hg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-Tt-WCh" customClass="HertzSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="98.5" y="434" width="178" height="178"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="87.5" y="443" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="178" id="HKb-Dd-1Ke"/>
-                                    <constraint firstAttribute="height" constant="178" id="Zf5-pN-m3G"/>
+                                    <constraint firstAttribute="width" constant="200" id="HKb-Dd-1Ke"/>
+                                    <constraint firstAttribute="height" constant="200" id="Zf5-pN-m3G"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -12,25 +12,23 @@ import AudioKit
 class Metronome {
     
     var isMetOn: Bool = false
-    var frequency: Double = 60.0
+    var frequency: Double = 80.0
     var beepHerz: Double = 640.0
+    
     var generator: AKOperationGenerator!
     
     func generate() {
         
         generator = AKOperationGenerator() { parameters in
+        
+            let met = AKOperation.metronome(frequency: (parameters[0] / 60))
             
-            let met = AKOperation.metronome(frequency: parameters[0] / 60)
-            // let count = met.count(maximum: 4, looping: true)
+            let click = clickTone(
+                hertz: parameters[1],
+                met: met
+            )
             
-            let beep = AKOperation.sineWave(frequency: parameters[1])
-            // TODO: Add some more sound options against the sinewave: bitcrush, stereo, etc.
-            
-            let beeps = beep.triggeredWithEnvelope(
-                trigger: met,
-                attack: 0.01, hold: 0, release: 0.05)
-            
-            return beeps
+            return click
         }
         
         generator.parameters[0] = self.getFrequency()
@@ -39,6 +37,17 @@ class Metronome {
         AudioKit.output = generator
         AudioKit.start()
         generator.start()
+        
+    }
+    
+    func clickTone(hertz: AKOperation, met: AKOperation) -> AKOperation {
+        
+        let beep = AKOperation.sineWave(frequency: hertz)
+        let beeps = beep.triggeredWithEnvelope(
+            trigger: met,
+            attack: 0.01, hold: 0, release: 0.07)
+        
+        return beeps
     }
     
     func setFrequency(_ value: Double) {

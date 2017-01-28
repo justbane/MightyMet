@@ -15,9 +15,12 @@
 		39628C1E1E3091A300900912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1D1E3091A300900912 /* Assets.xcassets */; };
 		39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1F1E3091A300900912 /* LaunchScreen.storyboard */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
+		39B983291E3875A100BCAF89 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B983281E3875A100BCAF89 /* Gradients.swift */; };
 		39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
+		39FB259E1E3C73940008974F /* blip.aif in Resources */ = {isa = PBXBuildFile; fileRef = 39FB259D1E3C73940008974F /* blip.aif */; };
+		39FB25A01E3C74150008974F /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB259F1E3C74150008974F /* SoundPlayer.swift */; };
 		3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63508F748E1C94EE753011F /* Pods_MightyMet.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,9 +35,12 @@
 		39628C201E3091A300900912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39628C221E3091A300900912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39B983281E3875A100BCAF89 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HertzSelectorView.swift; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
+		39FB259D1E3C73940008974F /* blip.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = blip.aif; sourceTree = "<group>"; };
+		39FB259F1E3C74150008974F /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.release.xcconfig"; sourceTree = "<group>"; };
 		9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.debug.xcconfig"; sourceTree = "<group>"; };
 		A63508F748E1C94EE753011F /* Pods_MightyMet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MightyMet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				39359D101E369EB6004D4CC0 /* Metronome.swift */,
+				39FB259F1E3C74150008974F /* SoundPlayer.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -81,6 +88,7 @@
 		39628C151E3091A300900912 /* MightyMet */ = {
 			isa = PBXGroup;
 			children = (
+				39FB259C1E3C73840008974F /* Sounds */,
 				39359D0F1E369E9F004D4CC0 /* Classes */,
 				39DC7C461E355D6000E0B849 /* UIClasses */,
 				39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */,
@@ -101,8 +109,17 @@
 				39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */,
 				39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */,
 				39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */,
+				39B983281E3875A100BCAF89 /* Gradients.swift */,
 			);
 			name = UIClasses;
+			sourceTree = "<group>";
+		};
+		39FB259C1E3C73840008974F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				39FB259D1E3C73940008974F /* blip.aif */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		A76D51208FAE05FC0C9F3806 /* Frameworks */ = {
@@ -189,6 +206,7 @@
 				39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */,
 				39628C1E1E3091A300900912 /* Assets.xcassets in Resources */,
 				39628C1C1E3091A300900912 /* Main.storyboard in Resources */,
+				39FB259E1E3C73940008974F /* blip.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +268,8 @@
 				39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */,
 				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
 				39628C191E3091A300900912 /* ViewController.swift in Sources */,
+				39B983291E3875A100BCAF89 /* Gradients.swift in Sources */,
+				39FB25A01E3C74150008974F /* SoundPlayer.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
 				39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,

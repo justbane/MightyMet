@@ -18,21 +18,33 @@ public class MightyMetUI : NSObject {
     //// Cache
 
     private struct Cache {
-        static let gradientColor: UIColor = UIColor(red: 0.676, green: 0.073, blue: 0.073, alpha: 1.000)
-        static let gradientColor2: UIColor = UIColor(red: 0.987, green: 1.000, blue: 0.000, alpha: 1.000)
+        static let red: UIColor = UIColor(red: 0.676, green: 0.073, blue: 0.073, alpha: 1.000)
+        static let yellow: UIColor = UIColor(red: 0.987, green: 1.000, blue: 0.000, alpha: 1.000)
+        static let fuscia: UIColor = UIColor(red: 1.000, green: 0.000, blue: 0.413, alpha: 1.000)
         static let transparent: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.156)
         static let lime: UIColor = UIColor(red: 0.000, green: 1.000, blue: 0.108, alpha: 1.000)
         static let electricBlue: UIColor = UIColor(red: 0.000, green: 0.974, blue: 1.000, alpha: 1.000)
-        static let redYellow: CGGradient = CGGradient(colorsSpace: nil, colors: [MightyMetUI.gradientColor.cgColor, MightyMetUI.gradientColor2.cgColor] as CFArray, locations: [0.26, 1])!
+        static let blue: UIColor = UIColor(red: 0.000, green: 0.070, blue: 1.000, alpha: 1.000)
+        static let darkBlue: UIColor = MightyMetUI.blue.withBrightness(0.3)
+        static let darkRed: UIColor = MightyMetUI.red.withBrightness(0.3)
+        static let yellowOrange: UIColor = MightyMetUI.yellow.withHue(0.1)
+        static let darkFuscia: UIColor = MightyMetUI.fuscia.withBrightness(0.4)
+        static let redYellow: CGGradient = CGGradient(colorsSpace: nil, colors: [MightyMetUI.red.cgColor, MightyMetUI.yellow.cgColor] as CFArray, locations: [0.26, 1])!
     }
 
     //// Colors
 
-    public dynamic class var gradientColor: UIColor { return Cache.gradientColor }
-    public dynamic class var gradientColor2: UIColor { return Cache.gradientColor2 }
+    public dynamic class var red: UIColor { return Cache.red }
+    public dynamic class var yellow: UIColor { return Cache.yellow }
+    public dynamic class var fuscia: UIColor { return Cache.fuscia }
     public dynamic class var transparent: UIColor { return Cache.transparent }
     public dynamic class var lime: UIColor { return Cache.lime }
     public dynamic class var electricBlue: UIColor { return Cache.electricBlue }
+    public dynamic class var blue: UIColor { return Cache.blue }
+    public dynamic class var darkBlue: UIColor { return Cache.darkBlue }
+    public dynamic class var darkRed: UIColor { return Cache.darkRed }
+    public dynamic class var yellowOrange: UIColor { return Cache.yellowOrange }
+    public dynamic class var darkFuscia: UIColor { return Cache.darkFuscia }
 
     //// Gradients
 
@@ -104,7 +116,7 @@ public class MightyMetUI : NSObject {
         context.restoreGState()
     }
 
-    public dynamic class func drawBPMSelector(frame: CGRect = CGRect(x: 0, y: 0, width: 288, height: 301), bPMAngle: CGFloat = 0, bPMText: String = "0") {
+    public dynamic class func drawBPMSelector(frame: CGRect = CGRect(x: 0, y: 0, width: 310, height: 310), bPMAngle: CGFloat = 0, bPMText: String = "0") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -117,7 +129,7 @@ public class MightyMetUI : NSObject {
 
 
         //// Subframes
-        let group: CGRect = CGRect(x: frame.minX, y: frame.minY + frame.height - 299, width: 288, height: 288)
+        let group: CGRect = CGRect(x: frame.minX + 11, y: frame.minY + frame.height - 299, width: 288, height: 288)
 
 
         //// Group
@@ -187,15 +199,19 @@ public class MightyMetUI : NSObject {
         //// TextLabel
         //// BPM Drawing
         let bPMRect = CGRect(x: group.minX + 53, y: group.minY + 113, width: 110, height: 61)
+        context.saveGState()
+        context.setShadow(offset: shadow.shadowOffset, blur: shadow.shadowBlurRadius, color: (shadow.shadowColor as! UIColor).cgColor)
         let bPMStyle = NSMutableParagraphStyle()
         bPMStyle.alignment = .right
-        let bPMFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Roman", size: 60)!, NSForegroundColorAttributeName: UIColor.black, NSParagraphStyleAttributeName: bPMStyle]
+        let bPMFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Roman", size: 60)!, NSForegroundColorAttributeName: UIColor.white, NSParagraphStyleAttributeName: bPMStyle]
 
         let bPMTextHeight: CGFloat = bPMText.boundingRect(with: CGSize(width: bPMRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: bPMFontAttributes, context: nil).height
         context.saveGState()
         context.clip(to: bPMRect)
         bPMText.draw(in: CGRect(x: bPMRect.minX, y: bPMRect.minY + (bPMRect.height - bPMTextHeight) / 2, width: bPMRect.width, height: bPMTextHeight), withAttributes: bPMFontAttributes)
         context.restoreGState()
+        context.restoreGState()
+
 
 
         //// BPM Label Drawing
@@ -203,7 +219,7 @@ public class MightyMetUI : NSObject {
         let bPMLabelTextContent = "BPM"
         let bPMLabelStyle = NSMutableParagraphStyle()
         bPMLabelStyle.alignment = .left
-        let bPMLabelFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Light", size: UIFont.labelFontSize)!, NSForegroundColorAttributeName: UIColor.black, NSParagraphStyleAttributeName: bPMLabelStyle]
+        let bPMLabelFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Light", size: UIFont.labelFontSize)!, NSForegroundColorAttributeName: UIColor.white, NSParagraphStyleAttributeName: bPMLabelStyle]
 
         let bPMLabelTextHeight: CGFloat = bPMLabelTextContent.boundingRect(with: CGSize(width: bPMLabelRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: bPMLabelFontAttributes, context: nil).height
         context.saveGState()
@@ -212,33 +228,38 @@ public class MightyMetUI : NSObject {
         context.restoreGState()
     }
 
-    public dynamic class func drawHertzSelector(frame: CGRect = CGRect(x: 10, y: 11, width: 178, height: 178), pitchAngle: CGFloat = 0, hertzText: String = "0") {
+    public dynamic class func drawHertzSelector(frame: CGRect = CGRect(x: 0, y: 0, width: 200, height: 200), pitchAngle: CGFloat = 0, hertzText: String = "0") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
         //// Color Declarations
-        let gradientColor3 = UIColor(red: 0.462, green: 0.000, blue: 1.000, alpha: 1.000)
-        let gradientColor4 = UIColor(red: 1.000, green: 0.000, blue: 0.413, alpha: 1.000)
+        let purple = UIColor(red: 0.462, green: 0.000, blue: 1.000, alpha: 1.000)
 
         //// Gradient Declarations
-        let bluePink = CGGradient(colorsSpace: nil, colors: [gradientColor3.cgColor, gradientColor4.cgColor] as CFArray, locations: [0, 1])!
+        let bluePink = CGGradient(colorsSpace: nil, colors: [purple.cgColor, MightyMetUI.fuscia.cgColor] as CFArray, locations: [0, 1])!
+
+        //// Shadow Declarations
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.darkGray.withAlphaComponent(0.8)
+        shadow.shadowOffset = CGSize(width: 2, height: 2)
+        shadow.shadowBlurRadius = 5
 
         //// Track
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: frame.minX + 89.5, y: frame.minY + 28))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 62.41, y: frame.minY + 34.39), controlPoint1: CGPoint(x: frame.minX + 79.76, y: frame.minY + 28), controlPoint2: CGPoint(x: frame.minX + 70.56, y: frame.minY + 30.3))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 29, y: frame.minY + 88.5), controlPoint1: CGPoint(x: frame.minX + 42.6, y: frame.minY + 44.32), controlPoint2: CGPoint(x: frame.minX + 29, y: frame.minY + 64.82))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 89.5, y: frame.minY + 149), controlPoint1: CGPoint(x: frame.minX + 29, y: frame.minY + 121.91), controlPoint2: CGPoint(x: frame.minX + 56.09, y: frame.minY + 149))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 150, y: frame.minY + 88.5), controlPoint1: CGPoint(x: frame.minX + 122.91, y: frame.minY + 149), controlPoint2: CGPoint(x: frame.minX + 150, y: frame.minY + 121.91))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 89.5, y: frame.minY + 28), controlPoint1: CGPoint(x: frame.minX + 150, y: frame.minY + 55.09), controlPoint2: CGPoint(x: frame.minX + 122.91, y: frame.minY + 28))
+        bezierPath.move(to: CGPoint(x: frame.minX + 100.5, y: frame.minY + 39))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 73.41, y: frame.minY + 45.39), controlPoint1: CGPoint(x: frame.minX + 90.76, y: frame.minY + 39), controlPoint2: CGPoint(x: frame.minX + 81.56, y: frame.minY + 41.3))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 40, y: frame.minY + 99.5), controlPoint1: CGPoint(x: frame.minX + 53.6, y: frame.minY + 55.32), controlPoint2: CGPoint(x: frame.minX + 40, y: frame.minY + 75.82))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 100.5, y: frame.minY + 160), controlPoint1: CGPoint(x: frame.minX + 40, y: frame.minY + 132.91), controlPoint2: CGPoint(x: frame.minX + 67.09, y: frame.minY + 160))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 161, y: frame.minY + 99.5), controlPoint1: CGPoint(x: frame.minX + 133.91, y: frame.minY + 160), controlPoint2: CGPoint(x: frame.minX + 161, y: frame.minY + 132.91))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 100.5, y: frame.minY + 39), controlPoint1: CGPoint(x: frame.minX + 161, y: frame.minY + 66.09), controlPoint2: CGPoint(x: frame.minX + 133.91, y: frame.minY + 39))
         bezierPath.close()
-        bezierPath.move(to: CGPoint(x: frame.minX + 178, y: frame.minY + 89))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 89, y: frame.minY + 178), controlPoint1: CGPoint(x: frame.minX + 178, y: frame.minY + 138.15), controlPoint2: CGPoint(x: frame.minX + 138.15, y: frame.minY + 178))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX, y: frame.minY + 89), controlPoint1: CGPoint(x: frame.minX + 39.85, y: frame.minY + 178), controlPoint2: CGPoint(x: frame.minX, y: frame.minY + 138.15))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 39, y: frame.minY + 15.36), controlPoint1: CGPoint(x: frame.minX, y: frame.minY + 58.38), controlPoint2: CGPoint(x: frame.minX + 15.46, y: frame.minY + 31.38))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 89, y: frame.minY), controlPoint1: CGPoint(x: frame.minX + 53.25, y: frame.minY + 5.67), controlPoint2: CGPoint(x: frame.minX + 70.46, y: frame.minY))
-        bezierPath.addCurve(to: CGPoint(x: frame.minX + 178, y: frame.minY + 89), controlPoint1: CGPoint(x: frame.minX + 138.15, y: frame.minY), controlPoint2: CGPoint(x: frame.minX + 178, y: frame.minY + 39.85))
+        bezierPath.move(to: CGPoint(x: frame.minX + 189, y: frame.minY + 100))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 100, y: frame.minY + 189), controlPoint1: CGPoint(x: frame.minX + 189, y: frame.minY + 149.15), controlPoint2: CGPoint(x: frame.minX + 149.15, y: frame.minY + 189))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 11, y: frame.minY + 100), controlPoint1: CGPoint(x: frame.minX + 50.85, y: frame.minY + 189), controlPoint2: CGPoint(x: frame.minX + 11, y: frame.minY + 149.15))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 50, y: frame.minY + 26.36), controlPoint1: CGPoint(x: frame.minX + 11, y: frame.minY + 69.38), controlPoint2: CGPoint(x: frame.minX + 26.46, y: frame.minY + 42.38))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 100, y: frame.minY + 11), controlPoint1: CGPoint(x: frame.minX + 64.25, y: frame.minY + 16.67), controlPoint2: CGPoint(x: frame.minX + 81.46, y: frame.minY + 11))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 189, y: frame.minY + 100), controlPoint1: CGPoint(x: frame.minX + 149.15, y: frame.minY + 11), controlPoint2: CGPoint(x: frame.minX + 189, y: frame.minY + 50.85))
         bezierPath.close()
         context.saveGState()
         bezierPath.addClip()
@@ -255,7 +276,7 @@ public class MightyMetUI : NSObject {
         //// Handle
         //// BPMHandle Drawing
         context.saveGState()
-        context.translateBy(x: frame.minX + 89, y: frame.minY + 89)
+        context.translateBy(x: frame.minX + 100, y: frame.minY + 100)
         context.rotate(by: -(pitchAngle + 90) * CGFloat.pi/180)
 
         let bPMHandlePath = UIBezierPath(ovalIn: CGRect(x: -13.84, y: 61, width: 27.84, height: 27.82))
@@ -272,24 +293,28 @@ public class MightyMetUI : NSObject {
 
         //// Labels
         //// Hertz Value Drawing
-        let hertzValueRect = CGRect(x: frame.minX + 46, y: frame.minY + 54, width: 87, height: 49)
+        let hertzValueRect = CGRect(x: frame.minX + 57, y: frame.minY + 65, width: 87, height: 49)
+        context.saveGState()
+        context.setShadow(offset: shadow.shadowOffset, blur: shadow.shadowBlurRadius, color: (shadow.shadowColor as! UIColor).cgColor)
         let hertzValueStyle = NSMutableParagraphStyle()
         hertzValueStyle.alignment = .center
-        let hertzValueFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Roman", size: 40)!, NSForegroundColorAttributeName: UIColor.black, NSParagraphStyleAttributeName: hertzValueStyle]
+        let hertzValueFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Roman", size: 40)!, NSForegroundColorAttributeName: UIColor.white, NSParagraphStyleAttributeName: hertzValueStyle]
 
         let hertzValueTextHeight: CGFloat = hertzText.boundingRect(with: CGSize(width: hertzValueRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: hertzValueFontAttributes, context: nil).height
         context.saveGState()
         context.clip(to: hertzValueRect)
         hertzText.draw(in: CGRect(x: hertzValueRect.minX, y: hertzValueRect.minY + (hertzValueRect.height - hertzValueTextHeight) / 2, width: hertzValueRect.width, height: hertzValueTextHeight), withAttributes: hertzValueFontAttributes)
         context.restoreGState()
+        context.restoreGState()
+
 
 
         //// Herts Label Drawing
-        let hertsLabelRect = CGRect(x: frame.minX + 61, y: frame.minY + 103, width: 56, height: 21)
+        let hertsLabelRect = CGRect(x: frame.minX + 72, y: frame.minY + 114, width: 56, height: 21)
         let hertsLabelTextContent = "Hz"
         let hertsLabelStyle = NSMutableParagraphStyle()
         hertsLabelStyle.alignment = .center
-        let hertsLabelFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Light", size: 20)!, NSForegroundColorAttributeName: UIColor.black, NSParagraphStyleAttributeName: hertsLabelStyle]
+        let hertsLabelFontAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Light", size: 20)!, NSForegroundColorAttributeName: UIColor.white, NSParagraphStyleAttributeName: hertsLabelStyle]
 
         let hertsLabelTextHeight: CGFloat = hertsLabelTextContent.boundingRect(with: CGSize(width: hertsLabelRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: hertsLabelFontAttributes, context: nil).height
         context.saveGState()
@@ -298,4 +323,39 @@ public class MightyMetUI : NSObject {
         context.restoreGState()
     }
 
+}
+
+
+
+extension UIColor {
+    func withHue(_ newHue: CGFloat) -> UIColor {
+        var saturation: CGFloat = 1, brightness: CGFloat = 1, alpha: CGFloat = 1
+        self.getHue(nil, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        return UIColor(hue: newHue, saturation: saturation, brightness: brightness, alpha: alpha)
+    }
+    func withSaturation(_ newSaturation: CGFloat) -> UIColor {
+        var hue: CGFloat = 1, brightness: CGFloat = 1, alpha: CGFloat = 1
+        self.getHue(&hue, saturation: nil, brightness: &brightness, alpha: &alpha)
+        return UIColor(hue: hue, saturation: newSaturation, brightness: brightness, alpha: alpha)
+    }
+    func withBrightness(_ newBrightness: CGFloat) -> UIColor {
+        var hue: CGFloat = 1, saturation: CGFloat = 1, alpha: CGFloat = 1
+        self.getHue(&hue, saturation: &saturation, brightness: nil, alpha: &alpha)
+        return UIColor(hue: hue, saturation: saturation, brightness: newBrightness, alpha: alpha)
+    }
+    func withAlpha(_ newAlpha: CGFloat) -> UIColor {
+        var hue: CGFloat = 1, saturation: CGFloat = 1, brightness: CGFloat = 1
+        self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil)
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: newAlpha)
+    }
+    func highlight(withLevel highlight: CGFloat) -> UIColor {
+        var red: CGFloat = 1, green: CGFloat = 1, blue: CGFloat = 1, alpha: CGFloat = 1
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return UIColor(red: red * (1-highlight) + highlight, green: green * (1-highlight) + highlight, blue: blue * (1-highlight) + highlight, alpha: alpha * (1-highlight) + highlight)
+    }
+    func shadow(withLevel shadow: CGFloat) -> UIColor {
+        var red: CGFloat = 1, green: CGFloat = 1, blue: CGFloat = 1, alpha: CGFloat = 1
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return UIColor(red: red * (1-shadow), green: green * (1-shadow), blue: blue * (1-shadow), alpha: alpha * (1-shadow) + shadow)
+    }
 }

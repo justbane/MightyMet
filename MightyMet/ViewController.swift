@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Set background
+        let background = Gradients(colorString: "fuscia").getGradient()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, at: 0)
+        
         // Initial metronome settings
         BPMSelector.setBpmAngle(80.0)
         BPMSelector.setBpmText(80.0)
@@ -32,7 +37,7 @@ class ViewController: UIViewController {
         // Attach gesture to view
         self.view.addGestureRecognizer(bpmRecognizer)
         
-        let hertzRecognizer = XMCircleGestureRecognizer(midPoint: HertzSelector.center, innerRadius:62, outerRadius:89, target: self, action: #selector(rotateHertzGesture(recognizer:)))
+        let hertzRecognizer = XMCircleGestureRecognizer(midPoint: HertzSelector.center, innerRadius:55, outerRadius:95, target: self, action: #selector(rotateHertzGesture(recognizer:)))
         // Attach gesture to view
         self.view.addGestureRecognizer(hertzRecognizer)
 
