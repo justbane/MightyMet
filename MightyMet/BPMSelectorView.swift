@@ -25,12 +25,22 @@ class BPMSelectorView: UIView {
         var angleValue = 0.0
         angleValue = 360.0 - Double(value)
         
+        if angleValue <= 90.0 {
+            angleValue = 90.0
+        }
+        
         self.bpmAngleValue = CGFloat(angleValue)
         setNeedsDisplay()
     }
     
     func setBpmText(_ value: CGFloat) {
-        let textValue = String(format: "%.0f", round(value))
+        var textValue: String
+        if value >= 270.00 {
+            textValue = String(format: "%.0f", round(270.00))
+        } else {
+            textValue = String(format: "%.0f", round(value))
+        }
+        
         self.bpmTextValue = textValue
         setNeedsDisplay()
     }

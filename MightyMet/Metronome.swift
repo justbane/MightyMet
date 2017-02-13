@@ -7,71 +7,118 @@
 //
 
 import Foundation
-import AudioKit
 
 class Metronome {
     
-    var isMetOn: Bool = false
-    var frequency: Double = 80.0
-    var beepHerz: Double = 640.0
-    
-    var generator: AKOperationGenerator!
+    var frequency: Double = 88.0
+    var sound: String = "clave"
+    var threshold: Double = 250000.00
+    var isRunning: Bool = true
     
     func generate() {
         
-        generator = AKOperationGenerator() { parameters in
+        let clickOne = AudioEngine(sound: sound)
         
-            let met = AKOperation.metronome(frequency: (parameters[0] / 60))
+        let clickTwo = AudioEngine(sound: sound)
+        
+        let clickThree = AudioEngine(sound: sound)
+        
+        let clickFour = AudioEngine(sound: sound)
+        
+        DispatchQueue.global(qos: .background).async {
             
-            let click = clickTone(
-                hertz: parameters[1],
-                met: met
-            )
+            var whichClick = 1
+            var curTime = Date().nanosecondsSince1970
             
-            return click
+            // Timer loop
+            while self.isRunning {
+                if ((Date().nanosecondsSince1970 - curTime) >= self.getBpmToNanoseconds()) {
+                    
+                    // Reset the current time
+                    curTime = Date().nanosecondsSince1970
+                    
+                    // Play the sound
+                    switch whichClick {
+                        case 2:
+                            clickTwo.playSound(value: 1.0, rateOrPitch: "pitch")
+                            whichClick = 3
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                        break
+                        
+                        case 3:
+                            clickThree.playSound(value: 1.0, rateOrPitch: "pitch")
+                            whichClick = 4
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                        break
+                        
+                        case 4:
+                            clickFour.playSound(value: 1.0, rateOrPitch: "pitch")
+                            whichClick = 1
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                        break
+                        
+                        default:
+                            clickOne.playSound(value: 1.0, rateOrPitch: "pitch")
+                            whichClick = 2
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                    }
+                    
+                }
+            }
+            
         }
-        
-        generator.parameters[0] = self.getFrequency()
-        generator.parameters[1] = self.getBeepHerz()
-        
-        AudioKit.output = generator
-        AudioKit.start()
-        generator.start()
-        
     }
     
-    func clickTone(hertz: AKOperation, met: AKOperation) -> AKOperation {
-        
-        let beep = AKOperation.sineWave(frequency: hertz)
-        let beeps = beep.triggeredWithEnvelope(
-            trigger: met,
-            attack: 0.01, hold: 0, release: 0.07)
-        
-        return beeps
+    func getBpmToNanoseconds() -> Double {
+        return (((60000.00 / frequency) * 1000000) - self.threshold).rounded(.towardZero)
     }
     
     func setFrequency(_ value: Double) {
         self.frequency = value
-        generator.parameters[0] = value
-    }
-    
-    func setBeepHerz(_ value: Double) {
-        
-        var calcHertx: Double
-        let difference = 640.00 - 180.00
-        calcHertx = value + difference
-        
-        self.beepHerz = calcHertx
-        generator.parameters[1] = calcHertx
     }
     
     func getFrequency() -> Double {
         return self.frequency
     }
     
-    func getBeepHerz() -> Double {
-        return self.beepHerz
+    func setSound(_ value: Double) {
+        isRunning = false
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metStateChange"), object: nil, userInfo: ["isRunning":isRunning])
+        
+        if (value >= 180.00) && (value <= 270.00) {
+            self.sound = "beep"
+        }
+        if (value > 270.00) && (value < 360.00) {
+            self.sound = "chirp"
+        }
+        if (value >= 0.0) && (value <= 90.00) {
+            self.sound = "sticks"
+        }
+        if (value > 90) && (value < 180.00) {
+            self.sound = "clave"
+        }
+        
+        generate()
+        isRunning = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metStateChange"), object: nil, userInfo: ["isRunning":isRunning])
+        
     }
     
+    func stop (completion: @escaping (_ running: Bool) -> Void) {
+        isRunning = false
+        completion(isRunning)
+    }
     
+    func start (completion: @escaping (_ running: Bool) -> Void) {
+        isRunning = true
+        generate()
+        completion(isRunning)
+    }
+    
+}
+
+extension Date {
+        var nanosecondsSince1970:Double {
+        return Double(((self.timeIntervalSince1970 * 1000) * 1000000))
+    }
 }

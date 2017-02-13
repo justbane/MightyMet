@@ -29,11 +29,20 @@ class HertzSelectorView: UIView {
     }
     
     func setHertzText(_ value: CGFloat) {
-        var calcHertz: Double
-        let difference = 640.00 - 180.00
-        calcHertz = Double(value) + difference
+        var textValue: String!
+        if (value >= 180.00) && (value <= 270.00) {
+            textValue = "Beep"
+        }
+        if (value > 270.00) && (value < 360.00) {
+            textValue = "Chirp"
+        }
+        if (value >= 0.0) && (value <= 90.00) {
+            textValue = "Sticks"
+        }
+        if (value > 90) && (value < 180.00) {
+            textValue = "Clave"
+        }
         
-        let textValue = String(format: "%.0f", round(calcHertz))
         self.hertzTextValue = textValue
         setNeedsDisplay()
     }

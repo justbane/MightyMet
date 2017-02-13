@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,34 +23,71 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A38-uT-bri" customClass="BPMSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="32.5" y="93" width="310" height="310"/>
+                                <rect key="frame" x="32.5" y="52" width="310" height="310"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAy-w1-lGl" customClass="TempoLight" customModule="MightyMet">
+                                        <rect key="frame" x="193" y="32" width="85" height="85"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="85" id="Drd-dU-HXt"/>
+                                            <constraint firstAttribute="width" constant="85" id="huk-cf-bWA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="90R-mN-W4r"/>
                                     <constraint firstAttribute="height" constant="310" id="S8f-v4-5Hg"/>
+                                    <constraint firstItem="uAy-w1-lGl" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="top" constant="32" id="d2F-Az-OfB"/>
+                                    <constraint firstAttribute="trailing" secondItem="uAy-w1-lGl" secondAttribute="trailing" constant="32" id="oAW-qJ-6gi"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-Tt-WCh" customClass="HertzSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="87.5" y="443" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="427" width="200" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HKb-Dd-1Ke"/>
                                     <constraint firstAttribute="height" constant="200" id="Zf5-pN-m3G"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TU-ku-SOz" customClass="PlayButton" customModule="MightyMet">
+                                <rect key="frame" x="259" y="354" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="G1C-yP-ecj"/>
+                                    <constraint firstAttribute="width" constant="100" id="vGY-Ft-u7y"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pressPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZwA-CR-p9e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-nh-aMp" customClass="PlaylistButton" customModule="MightyMet">
+                                <rect key="frame" x="16" y="354" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3Mg-e6-oI9"/>
+                                    <constraint firstAttribute="width" constant="100" id="Nqu-JQ-BFM"/>
+                                </constraints>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20390349629999999" green="0.28483200069999998" blue="0.36821466679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="A38-uT-bri" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="73" id="Uf1-a0-eCf"/>
+                            <constraint firstItem="Ics-nh-aMp" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="-8" id="2G9-V6-XxD"/>
+                            <constraint firstItem="0TU-ku-SOz" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="-8" id="9He-fx-8Mr"/>
+                            <constraint firstItem="A38-uT-bri" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="Uf1-a0-eCf"/>
+                            <constraint firstItem="0TU-ku-SOz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WeT-kE-6Tp"/>
+                            <constraint firstItem="Ics-nh-aMp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fGf-3J-fMU"/>
                             <constraint firstItem="A38-uT-bri" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fMq-z9-okD"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="40" id="oLH-iT-EBl"/>
+                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="65" id="gg4-aS-qbe"/>
                             <constraint firstItem="WAx-Tt-WCh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pcr-93-Dw8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BPMSelector" destination="A38-uT-bri" id="j22-lO-QiM"/>
-                        <outlet property="HertzSelector" destination="WAx-Tt-WCh" id="Xn3-SO-lV3"/>
+                        <outlet property="HertzSelector" destination="WAx-Tt-WCh" id="i7Z-KS-Wz0"/>
+                        <outlet property="playButton" destination="0TU-ku-SOz" id="2q0-H2-ue4"/>
+                        <outlet property="tempoLight" destination="uAy-w1-lGl" id="Jeh-fe-iiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
