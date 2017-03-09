@@ -12,27 +12,29 @@ class Metronome {
     
     var frequency: Double = 88.0
     var sound: String = "clave"
-    var threshold: Double = 250000.00
+    var lowSound: String = "clave-low"
+    var divisor: Double = 1.0
     var isRunning: Bool = true
+
     
     func generate() {
         
         let clickOne = AudioEngine(sound: sound)
+        let clickOneLow = AudioEngine(sound: lowSound)
         
         let clickTwo = AudioEngine(sound: sound)
-        
         let clickThree = AudioEngine(sound: sound)
-        
         let clickFour = AudioEngine(sound: sound)
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+            .async {
             
             var whichClick = 1
             var curTime = Date().nanosecondsSince1970
             
             // Timer loop
             while self.isRunning {
-                if ((Date().nanosecondsSince1970 - curTime) >= self.getBpmToNanoseconds()) {
+                if (Date().nanosecondsSince1970 - curTime >= self.getBpmToNanoseconds()) {
                     
                     // Reset the current time
                     curTime = Date().nanosecondsSince1970
@@ -40,27 +42,49 @@ class Metronome {
                     // Play the sound
                     switch whichClick {
                         case 2:
-                            clickTwo.playSound(value: 1.0, rateOrPitch: "pitch")
-                            whichClick = 3
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                            if self.divisor >= 2.0 {
+                                clickTwo.playSound(withFlash: false)
+                                if self.divisor > 2.0 {
+                                    whichClick = 3
+                                } else {
+                                    whichClick = 1
+                                }
+                            } else {
+                                clickTwo.playSound(withFlash: true)
+                                whichClick = 1
+                            }
                         break
                         
                         case 3:
-                            clickThree.playSound(value: 1.0, rateOrPitch: "pitch")
-                            whichClick = 4
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                            if self.divisor >= 3.0 {
+                                clickThree.playSound(withFlash: false)
+                                if self.divisor > 3.0 {
+                                    whichClick = 4
+                                } else {
+                                    whichClick = 1
+                                }
+                            } else {
+                                clickThree.playSound(withFlash: true)
+                                whichClick = 4
+                            }
                         break
                         
                         case 4:
-                            clickFour.playSound(value: 1.0, rateOrPitch: "pitch")
+                            if self.divisor >= 4.0 {
+                                clickFour.playSound(withFlash: false)
+                            } else {
+                                clickFour.playSound(withFlash: true)
+                            }
                             whichClick = 1
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
                         break
                         
                         default:
-                            clickOne.playSound(value: 1.0, rateOrPitch: "pitch")
+                            if self.divisor > 1 {
+                                clickOneLow.playSound(withFlash: false)
+                            } else {
+                                clickOne.playSound(withFlash: true)
+                            }
                             whichClick = 2
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
                     }
                     
                 }
@@ -70,7 +94,7 @@ class Metronome {
     }
     
     func getBpmToNanoseconds() -> Double {
-        return (((60000.00 / frequency) * 1000000) - self.threshold).rounded(.towardZero)
+        return (((1000 / self.frequency) * 60) * 1000000).rounded(.down) / self.divisor
     }
     
     func setFrequency(_ value: Double) {
@@ -79,6 +103,11 @@ class Metronome {
     
     func getFrequency() -> Double {
         return self.frequency
+    }
+    
+    func setDivisor(_ value: Double) {
+        self.divisor = value
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil, userInfo: ["divisorValue":value])
     }
     
     func setSound(_ value: Double) {
@@ -92,11 +121,13 @@ class Metronome {
             self.sound = "chirp"
         }
         if (value >= 0.0) && (value <= 90.00) {
-            self.sound = "sticks"
+            self.sound = "sticks-analog"
         }
         if (value > 90) && (value < 180.00) {
             self.sound = "clave"
         }
+        
+        self.lowSound = "\(self.sound)-low"
         
         generate()
         isRunning = true

@@ -20,11 +20,16 @@ class TempoLight: UIView {
     }
     
     func flash() {
-        isFlashing = true
         DispatchQueue.main.async {
-            self.setNeedsDisplay()
             let timeInterval = TimeInterval(0.1)
+            // Turn it on
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
+                self.isFlashing = true
+                self.setNeedsDisplay()
+            }
+            
+            // Turn it off
+            Timer.scheduledTimer(withTimeInterval: (timeInterval + 0.1), repeats: false) { (timer) in
                 self.flashOff()
             }
         }

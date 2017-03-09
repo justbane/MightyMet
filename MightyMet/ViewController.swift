@@ -16,7 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var BPMSelector: BPMSelectorView!
     @IBOutlet weak var HertzSelector: HertzSelectorView!
     @IBOutlet weak var playButton: PlayButton!
+    @IBOutlet weak var playListButton: PlaylistButton!
     @IBOutlet weak var tempoLight: TempoLight!
+    @IBOutlet weak var quarterButton: QuarterButton!
+    @IBOutlet weak var eigthButton: EighthButton!
+    @IBOutlet weak var tripletButton: TripletButton!
+    @IBOutlet weak var sixteenthButton: SixteenthButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,9 @@ class ViewController: UIViewController {
         
         // Tempo light observer
         NotificationCenter.default.addObserver(self, selector: #selector(flashTempo), name: NSNotification.Name(rawValue: "tempoFlash"), object: nil)
+        
+        // Set button state on divisor change
+        NotificationCenter.default.addObserver(self, selector: #selector(setDivButtonState), name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil)
 
     }
     
@@ -54,6 +62,7 @@ class ViewController: UIViewController {
         
         // Setup the met object
         metronome = Metronome()
+        metronome.setDivisor(1.0)
         metronome.start { (running) in
             if running {
                 self.playButton.setRunState(running: running)
@@ -114,6 +123,36 @@ class ViewController: UIViewController {
     
     func flashTempo() {
         self.tempoLight.flash()
+    }
+    
+    @IBAction func pressPlayList(_ sender: PlaylistButton) {
+        // Add Firebase stuff here
+    }
+    
+    @IBAction func pressQuarterButton(_ sender: Any) {
+        metronome.setDivisor(1.0)
+    }
+    
+    @IBAction func pressEigthButton(_ sender: Any) {
+        metronome.setDivisor(2.0)
+    }
+    
+    @IBAction func pressTripletButton(_ sender: Any) {
+        metronome.setDivisor(3.0)
+    }
+    
+    @IBAction func pressSixteenthButton(_ sender: Any) {
+        metronome.setDivisor(4.0)
+    }
+    
+    func setDivButtonState(_ state: Notification) {
+        
+        let data = state.userInfo! as! [String:Double]
+        
+        quarterButton.setStateFromNotification(data["divisorValue"]!)
+        eigthButton.setStateFromNotification(data["divisorValue"]!)
+        tripletButton.setStateFromNotification(data["divisorValue"]!)
+        sixteenthButton.setStateFromNotification(data["divisorValue"]!)
     }
 
 }

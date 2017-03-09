@@ -28,34 +28,48 @@ struct AudioEngine {
         
     }
     
-    func playSound(value: Float, rateOrPitch: String){
+    func playSound(withFlash: Bool){
         
+        // Create player node
         let audioPlayerNode = AVAudioPlayerNode()
         
+        // Stop and reset the player node and engine
         audioPlayerNode.stop()
         engine.stop()
         engine.reset()
         
+        // Attach player node to engine
         engine.attach(audioPlayerNode)
         
-        let changeAudioUnitTime = AVAudioUnitTimePitch()
-        
-        if (rateOrPitch == "rate") {
-            changeAudioUnitTime.rate = value
-        } else {
-            changeAudioUnitTime.pitch = value
+        // Prepare file buffer and format
+        let audioFormat = file.processingFormat
+        let audioFrameCount = UInt32(file.length)
+        let audioFileBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: audioFrameCount)
+        do {
+            try file.read(into: audioFileBuffer, frameCount: audioFrameCount)
+        } catch {
+            print("Error reading file to buffer")
         }
         
-        engine.attach(changeAudioUnitTime)
-        engine.connect(audioPlayerNode, to: changeAudioUnitTime, format: nil)
-        engine.connect(changeAudioUnitTime, to: engine.outputNode, format: nil)
-        audioPlayerNode.scheduleFile(file, at: nil, completionHandler: nil)
+        // Setup and connect mixer to engine (engine needs an oputput)
+        let mainMixer = engine.mainMixerNode
+        engine.connect(audioPlayerNode, to: mainMixer, format: audioFileBuffer.format)
+        
+        // Start the engine
         do {
             try engine.start()
         } catch {
-            print("Audio Engine start failure")
+            print("Audio engine start failure")
         }
         
+        
+        // Flash tempo light if necessary
+        if withFlash {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+        }
+        
+        // Schedule the file then play it
+        audioPlayerNode.scheduleFile(file, at: nil, completionHandler: nil)
         audioPlayerNode.play()
     }
     

@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39009B481E6D269F00697FD9 /* TripletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39009B471E6D269F00697FD9 /* TripletButton.swift */; };
+		39009B4C1E6D3FA100697FD9 /* SixteenthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39009B4B1E6D3FA100697FD9 /* SixteenthButton.swift */; };
+		39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39009B4D1E6D410F00697FD9 /* QuarterButton.swift */; };
 		39125A8C1E4E25C400D69D7A /* beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39125A8B1E4E25C400D69D7A /* beep.aiff */; };
 		39125A8E1E4E267500D69D7A /* chirp.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39125A8D1E4E267500D69D7A /* chirp.aiff */; };
 		39125A901E4E26FB00D69D7A /* clave.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39125A8F1E4E26FB00D69D7A /* clave.aiff */; };
 		39125A921E4E27B400D69D7A /* sticks.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39125A911E4E27B400D69D7A /* sticks.aiff */; };
 		3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3914684A1E34884800CFBB5D /* MightyMetUI.swift */; };
+		39158CA11E5A2D1700B9D812 /* beep-low.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39158C9D1E5A2D1700B9D812 /* beep-low.aiff */; };
+		39158CA21E5A2D1700B9D812 /* chirp-low.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39158C9E1E5A2D1700B9D812 /* chirp-low.aiff */; };
+		39158CA31E5A2D1800B9D812 /* clave-low.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39158C9F1E5A2D1700B9D812 /* clave-low.aiff */; };
+		39158CA41E5A2D1800B9D812 /* sticks-low.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39158CA01E5A2D1700B9D812 /* sticks-low.aiff */; };
 		39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39359D101E369EB6004D4CC0 /* Metronome.swift */; };
 		39628C171E3091A300900912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C161E3091A300900912 /* AppDelegate.swift */; };
 		39628C191E3091A300900912 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C181E3091A300900912 /* ViewController.swift */; };
@@ -21,22 +28,31 @@
 		399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043341E3F0B1400BC19EB /* PlayButton.swift */; };
 		399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043361E3F0C8100BC19EB /* PlaylistButton.swift */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
+		39AE79C21E6FDCD6008FF683 /* sticks-analog-low.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39AE79C01E6FDCD6008FF683 /* sticks-analog-low.aiff */; };
+		39AE79C31E6FDCD6008FF683 /* sticks-analog.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 39AE79C11E6FDCD6008FF683 /* sticks-analog.aiff */; };
 		39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B2ED421E51829A004DFE28 /* AudioEngine.swift */; };
 		39B983291E3875A100BCAF89 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B983281E3875A100BCAF89 /* Gradients.swift */; };
 		39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
 		39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */; };
-		39FB25A01E3C74150008974F /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB259F1E3C74150008974F /* SoundPlayer.swift */; };
+		39EF2E4B1E6DCAFF008FF6EC /* EighthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */; };
 		3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63508F748E1C94EE753011F /* Pods_MightyMet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39009B471E6D269F00697FD9 /* TripletButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripletButton.swift; sourceTree = "<group>"; };
+		39009B4B1E6D3FA100697FD9 /* SixteenthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixteenthButton.swift; sourceTree = "<group>"; };
+		39009B4D1E6D410F00697FD9 /* QuarterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterButton.swift; sourceTree = "<group>"; };
 		39125A8B1E4E25C400D69D7A /* beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = beep.aiff; sourceTree = "<group>"; };
 		39125A8D1E4E267500D69D7A /* chirp.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = chirp.aiff; sourceTree = "<group>"; };
 		39125A8F1E4E26FB00D69D7A /* clave.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = clave.aiff; sourceTree = "<group>"; };
 		39125A911E4E27B400D69D7A /* sticks.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = sticks.aiff; sourceTree = "<group>"; };
 		3914684A1E34884800CFBB5D /* MightyMetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MightyMetUI.swift; sourceTree = "<group>"; };
+		39158C9D1E5A2D1700B9D812 /* beep-low.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "beep-low.aiff"; sourceTree = "<group>"; };
+		39158C9E1E5A2D1700B9D812 /* chirp-low.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "chirp-low.aiff"; sourceTree = "<group>"; };
+		39158C9F1E5A2D1700B9D812 /* clave-low.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "clave-low.aiff"; sourceTree = "<group>"; };
+		39158CA01E5A2D1700B9D812 /* sticks-low.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "sticks-low.aiff"; sourceTree = "<group>"; };
 		39359D101E369EB6004D4CC0 /* Metronome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		39628C131E3091A300900912 /* MightyMet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MightyMet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39628C161E3091A300900912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,13 +64,15 @@
 		399043341E3F0B1400BC19EB /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		399043361E3F0C8100BC19EB /* PlaylistButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistButton.swift; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39AE79C01E6FDCD6008FF683 /* sticks-analog-low.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "sticks-analog-low.aiff"; sourceTree = "<group>"; };
+		39AE79C11E6FDCD6008FF683 /* sticks-analog.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "sticks-analog.aiff"; sourceTree = "<group>"; };
 		39B2ED421E51829A004DFE28 /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		39B983281E3875A100BCAF89 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HertzSelectorView.swift; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
 		39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempoLight.swift; sourceTree = "<group>"; };
-		39FB259F1E3C74150008974F /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthButton.swift; sourceTree = "<group>"; };
 		65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.release.xcconfig"; sourceTree = "<group>"; };
 		9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.debug.xcconfig"; sourceTree = "<group>"; };
 		A63508F748E1C94EE753011F /* Pods_MightyMet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MightyMet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,11 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39158C9C1E5A2D0600B9D812 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39628C1A1E3091A300900912 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		39359D0F1E369E9F004D4CC0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				39359D101E369EB6004D4CC0 /* Metronome.swift */,
-				39FB259F1E3C74150008974F /* SoundPlayer.swift */,
 				39B2ED421E51829A004DFE28 /* AudioEngine.swift */,
 			);
 			name = Classes;
@@ -106,13 +131,13 @@
 				39FB259C1E3C73840008974F /* Sounds */,
 				39359D0F1E369E9F004D4CC0 /* Classes */,
 				39DC7C461E355D6000E0B849 /* UIClasses */,
-				39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */,
+				39158C9C1E5A2D0600B9D812 /* Views */,
 				39628C161E3091A300900912 /* AppDelegate.swift */,
 				39628C181E3091A300900912 /* ViewController.swift */,
-				39628C1A1E3091A300900912 /* Main.storyboard */,
 				39628C1D1E3091A300900912 /* Assets.xcassets */,
 				39628C1F1E3091A300900912 /* LaunchScreen.storyboard */,
 				39628C221E3091A300900912 /* Info.plist */,
+				39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */,
 			);
 			path = MightyMet;
 			sourceTree = "<group>";
@@ -128,6 +153,10 @@
 				399043341E3F0B1400BC19EB /* PlayButton.swift */,
 				399043361E3F0C8100BC19EB /* PlaylistButton.swift */,
 				39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */,
+				39009B471E6D269F00697FD9 /* TripletButton.swift */,
+				39009B4B1E6D3FA100697FD9 /* SixteenthButton.swift */,
+				39009B4D1E6D410F00697FD9 /* QuarterButton.swift */,
+				39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */,
 			);
 			name = UIClasses;
 			sourceTree = "<group>";
@@ -135,6 +164,12 @@
 		39FB259C1E3C73840008974F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				39AE79C01E6FDCD6008FF683 /* sticks-analog-low.aiff */,
+				39AE79C11E6FDCD6008FF683 /* sticks-analog.aiff */,
+				39158C9D1E5A2D1700B9D812 /* beep-low.aiff */,
+				39158C9E1E5A2D1700B9D812 /* chirp-low.aiff */,
+				39158C9F1E5A2D1700B9D812 /* clave-low.aiff */,
+				39158CA01E5A2D1700B9D812 /* sticks-low.aiff */,
 				39125A911E4E27B400D69D7A /* sticks.aiff */,
 				39125A8F1E4E26FB00D69D7A /* clave.aiff */,
 				39125A8D1E4E267500D69D7A /* chirp.aiff */,
@@ -231,9 +266,15 @@
 				39125A921E4E27B400D69D7A /* sticks.aiff in Resources */,
 				39125A8C1E4E25C400D69D7A /* beep.aiff in Resources */,
 				39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */,
+				39158CA41E5A2D1800B9D812 /* sticks-low.aiff in Resources */,
 				39125A901E4E26FB00D69D7A /* clave.aiff in Resources */,
+				39158CA11E5A2D1700B9D812 /* beep-low.aiff in Resources */,
 				39125A8E1E4E267500D69D7A /* chirp.aiff in Resources */,
+				39158CA31E5A2D1800B9D812 /* clave-low.aiff in Resources */,
 				39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */,
+				39158CA21E5A2D1700B9D812 /* chirp-low.aiff in Resources */,
+				39AE79C31E6FDCD6008FF683 /* sticks-analog.aiff in Resources */,
+				39AE79C21E6FDCD6008FF683 /* sticks-analog-low.aiff in Resources */,
 				39628C1E1E3091A300900912 /* Assets.xcassets in Resources */,
 				39628C1C1E3091A300900912 /* Main.storyboard in Resources */,
 			);
@@ -296,16 +337,19 @@
 			files = (
 				39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */,
 				39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */,
+				39009B481E6D269F00697FD9 /* TripletButton.swift in Sources */,
 				399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */,
 				399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */,
 				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
 				39628C191E3091A300900912 /* ViewController.swift in Sources */,
 				39B983291E3875A100BCAF89 /* Gradients.swift in Sources */,
-				39FB25A01E3C74150008974F /* SoundPlayer.swift in Sources */,
+				39009B4C1E6D3FA100697FD9 /* SixteenthButton.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
 				39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */,
 				39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
+				39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */,
+				39EF2E4B1E6DCAFF008FF6EC /* EighthButton.swift in Sources */,
 				39628C171E3091A300900912 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
