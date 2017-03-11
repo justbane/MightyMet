@@ -14,6 +14,9 @@ struct AudioEngine {
     var engine: AVAudioEngine!
     var file: AVAudioFile!
     
+    // Create player node
+    let audioPlayerNode = AVAudioPlayerNode()
+    
     init(sound: String) {
         
         self.engine = AVAudioEngine()
@@ -25,18 +28,6 @@ struct AudioEngine {
         } catch {
             print("Error loading sound file")
         }
-        
-    }
-    
-    func playSound(withFlash: Bool){
-        
-        // Create player node
-        let audioPlayerNode = AVAudioPlayerNode()
-        
-        // Stop and reset the player node and engine
-        audioPlayerNode.stop()
-        engine.stop()
-        engine.reset()
         
         // Attach player node to engine
         engine.attach(audioPlayerNode)
@@ -55,13 +46,24 @@ struct AudioEngine {
         let mainMixer = engine.mainMixerNode
         engine.connect(audioPlayerNode, to: mainMixer, format: audioFileBuffer.format)
         
+        // Set mixer output volume
+        mainMixer.outputVolume = 0.9
+
+    }
+    
+    func playSound(withFlash: Bool){
+        
+        // Stop and reset the player node and engine
+        audioPlayerNode.stop()
+        engine.stop()
+        engine.reset()
+        
         // Start the engine
         do {
             try engine.start()
         } catch {
             print("Audio engine start failure")
         }
-        
         
         // Flash tempo light if necessary
         if withFlash {

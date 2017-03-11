@@ -11,90 +11,96 @@ import Foundation
 class Metronome {
     
     var frequency: Double = 88.0
-    var sound: String = "clave"
-    var lowSound: String = "clave-low"
     var divisor: Double = 1.0
     var isRunning: Bool = true
-
+    
+    var sound: String = "clave"
+    var lowSound: String = "clave-low"
+    
+    var clickOne = AudioEngine(sound: "clave")
+    var clickOneLow = AudioEngine(sound: "clave-low")
+    
+    var clickTwo = AudioEngine(sound: "clave")
+    var clickTwoLow = AudioEngine(sound: "clave-low")
+    
+    var clickThree = AudioEngine(sound: "clave")
+    var clickThreeLow = AudioEngine(sound: "clave-low")
+    
+    var clickFour = AudioEngine(sound: "clave")
+    var clickFourLow = AudioEngine(sound: "clave-low")
+    
     
     func generate() {
         
-        let clickOne = AudioEngine(sound: sound)
-        let clickOneLow = AudioEngine(sound: lowSound)
+        var whichClick = 1
+        var currTime = CFAbsoluteTimeGetCurrent()
         
-        let clickTwo = AudioEngine(sound: sound)
-        let clickThree = AudioEngine(sound: sound)
-        let clickFour = AudioEngine(sound: sound)
-        
-        DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
-            .async {
-            
-            var whichClick = 1
-            var curTime = Date().nanosecondsSince1970
-            
-            // Timer loop
-            while self.isRunning {
-                if (Date().nanosecondsSince1970 - curTime >= self.getBpmToNanoseconds()) {
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.0036, repeats: true) { (timer) in
+
+            DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global()).async {
+                
+                // Invalidate timer loop
+                if !self.isRunning {
+                    timer.invalidate()
+                }
+                
+                if self.isRunning && (CFAbsoluteTimeGetCurrent() - currTime >= self.getBpm()) {
                     
                     // Reset the current time
-                    curTime = Date().nanosecondsSince1970
+                    currTime = CFAbsoluteTimeGetCurrent()
                     
                     // Play the sound
                     switch whichClick {
-                        case 2:
-                            if self.divisor >= 2.0 {
-                                clickTwo.playSound(withFlash: false)
-                                if self.divisor > 2.0 {
-                                    whichClick = 3
-                                } else {
-                                    whichClick = 1
-                                }
+                    case 2:
+                        if self.divisor >= 2.0 {
+                            self.clickTwoLow.playSound(withFlash: false)
+                            if self.divisor > 2.0 {
+                                whichClick = 3
                             } else {
-                                clickTwo.playSound(withFlash: true)
                                 whichClick = 1
                             }
-                        break
-                        
-                        case 3:
-                            if self.divisor >= 3.0 {
-                                clickThree.playSound(withFlash: false)
-                                if self.divisor > 3.0 {
-                                    whichClick = 4
-                                } else {
-                                    whichClick = 1
-                                }
-                            } else {
-                                clickThree.playSound(withFlash: true)
-                                whichClick = 4
-                            }
-                        break
-                        
-                        case 4:
-                            if self.divisor >= 4.0 {
-                                clickFour.playSound(withFlash: false)
-                            } else {
-                                clickFour.playSound(withFlash: true)
-                            }
+                        } else {
+                            self.clickTwo.playSound(withFlash: true)
                             whichClick = 1
+                        }
                         break
                         
-                        default:
-                            if self.divisor > 1 {
-                                clickOneLow.playSound(withFlash: false)
+                    case 3:
+                        if self.divisor >= 3.0 {
+                            self.clickThreeLow.playSound(withFlash: false)
+                            if self.divisor > 3.0 {
+                                whichClick = 4
                             } else {
-                                clickOne.playSound(withFlash: true)
+                                whichClick = 1
                             }
-                            whichClick = 2
+                        } else {
+                            self.clickThree.playSound(withFlash: true)
+                            whichClick = 4
+                        }
+                        break
+                        
+                    case 4:
+                        if self.divisor >= 4.0 {
+                            self.clickFourLow.playSound(withFlash: false)
+                        } else {
+                            self.clickFour.playSound(withFlash: true)
+                        }
+                        whichClick = 1
+                        break
+                        
+                    default:
+                        self.clickOne.playSound(withFlash: true)
+                        whichClick = 2
                     }
                     
                 }
             }
-            
         }
+        
     }
     
-    func getBpmToNanoseconds() -> Double {
-        return (((1000 / self.frequency) * 60) * 1000000).rounded(.down) / self.divisor
+    func getBpm() -> Double {
+        return (60 / self.frequency) / self.divisor
     }
     
     func setFrequency(_ value: Double) {
@@ -111,14 +117,12 @@ class Metronome {
     }
     
     func setSound(_ value: Double) {
-        isRunning = false
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metStateChange"), object: nil, userInfo: ["isRunning":isRunning])
         
         if (value >= 180.00) && (value <= 270.00) {
-            self.sound = "beep"
+            self.sound = "snare"
         }
         if (value > 270.00) && (value < 360.00) {
-            self.sound = "chirp"
+            self.sound = "cowbell"
         }
         if (value >= 0.0) && (value <= 90.00) {
             self.sound = "sticks-analog"
@@ -129,9 +133,19 @@ class Metronome {
         
         self.lowSound = "\(self.sound)-low"
         
-        generate()
-        isRunning = true
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metStateChange"), object: nil, userInfo: ["isRunning":isRunning])
+        
+        // Set sounds in class
+        clickOne = AudioEngine(sound: sound)
+        clickOneLow = AudioEngine(sound: lowSound)
+        
+        clickTwo = AudioEngine(sound: sound)
+        clickTwoLow = AudioEngine(sound: lowSound)
+        
+        clickThree = AudioEngine(sound: sound)
+        clickThreeLow = AudioEngine(sound: lowSound)
+        
+        clickFour = AudioEngine(sound: sound)
+        clickFourLow = AudioEngine(sound: lowSound)
         
     }
     
@@ -149,7 +163,7 @@ class Metronome {
 }
 
 extension Date {
-        var nanosecondsSince1970:Double {
+    var nanosecondsSince1970:Double {
         return Double(((self.timeIntervalSince1970 * 1000) * 1000000))
     }
 }

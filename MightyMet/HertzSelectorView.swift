@@ -31,10 +31,10 @@ class HertzSelectorView: UIView {
     func setHertzText(_ value: CGFloat) {
         var textValue: String!
         if (value >= 180.00) && (value <= 270.00) {
-            textValue = "Beep"
+            textValue = "Snare"
         }
         if (value > 270.00) && (value < 360.00) {
-            textValue = "Chirp"
+            textValue = "Cowbell"
         }
         if (value >= 0.0) && (value <= 90.00) {
             textValue = "Sticks"
