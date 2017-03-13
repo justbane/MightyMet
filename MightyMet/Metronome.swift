@@ -10,6 +10,7 @@ import Foundation
 
 class Metronome {
     
+    var timer: Timer! = nil
     var frequency: Double = 88.0
     var divisor: Double = 1.0
     var isRunning: Bool = true
@@ -32,10 +33,11 @@ class Metronome {
     
     func generate() {
         
+        // Set button state on divisor change
         var whichClick = 1
         var currTime = CFAbsoluteTimeGetCurrent()
         
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.0036, repeats: true) { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.0036, repeats: true) { (timer) in
 
             DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global()).async {
                 
@@ -119,13 +121,13 @@ class Metronome {
     func setSound(_ value: Double) {
         
         if (value >= 180.00) && (value <= 270.00) {
-            self.sound = "snare"
+            self.sound = "beep"
         }
         if (value > 270.00) && (value < 360.00) {
-            self.sound = "cowbell"
+            self.sound = "drum"
         }
         if (value >= 0.0) && (value <= 90.00) {
-            self.sound = "sticks-analog"
+            self.sound = "tink"
         }
         if (value > 90) && (value < 180.00) {
             self.sound = "clave"

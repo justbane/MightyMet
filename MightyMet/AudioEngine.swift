@@ -21,7 +21,7 @@ struct AudioEngine {
         
         self.engine = AVAudioEngine()
         
-        let filePath = Bundle.main.path(forResource: sound, ofType: "aiff")
+        let filePath = Bundle.main.path(forResource: sound, ofType: "wav")
         let url = URL(fileURLWithPath: filePath!)
         do {
             self.file = try AVAudioFile(forReading: url)
@@ -52,7 +52,7 @@ struct AudioEngine {
     }
     
     func playSound(withFlash: Bool){
-        
+         
         // Stop and reset the player node and engine
         audioPlayerNode.stop()
         engine.stop()

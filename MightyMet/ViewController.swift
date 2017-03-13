@@ -55,6 +55,9 @@ class ViewController: UIViewController {
         
         // Set button state on divisor change
         NotificationCenter.default.addObserver(self, selector: #selector(setDivButtonState), name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil)
+        
+        // Set timer validity on app inactive
+        NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
 
     }
     
@@ -97,7 +100,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pressPlay(_ sender: PlayButton) {
-        
         if metronome.isRunning {
             metronome.stop(completion: { (running) in
                 if !running {
@@ -113,7 +115,17 @@ class ViewController: UIViewController {
             })
             
         }
-
+    }
+    
+    func startStopMetronome(_ state: Notification) {
+        let data = state.userInfo! as! [String:Bool]
+        if data["pauseTimer"]! {
+            metronome.stop(completion: { (running) in
+                if !running {
+                    self.playButton.setRunState(running: running)
+                }
+            })
+        }
     }
     
     func setPlayButtonState(_ state: Notification) {
