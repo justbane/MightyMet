@@ -81,11 +81,22 @@ class ViewController: UIViewController {
     
     func rotateBPMGesture(recognizer:XMCircleGestureRecognizer)
     {
+        // Stop the met while we change tempo
+        metronome.stop(completion: { (running) in
+            self.playButton.setRunState(running: running)
+        })
+        // Update the angle
         if let angle = recognizer.angle?.degrees {
             // Angle is the absolute angle for the current gesture in radians
-            BPMSelector.setBpmAngle(angle)
-            BPMSelector.setBpmText(angle)
-            metronome.setFrequency(Double(angle))
+            self.BPMSelector.setBpmAngle(angle)
+            self.BPMSelector.setBpmText(angle)
+            self.metronome.setFrequency(Double(angle))
+        }
+        // Reset metronome woth new frequency
+        if recognizer.state == .ended {
+            metronome.start(completion: { (running) in
+                self.playButton.setRunState(running: running)
+            })
         }
     }
     
@@ -142,19 +153,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressQuarterButton(_ sender: Any) {
-        metronome.setDivisor(1.0)
+        setDivisor(divisor: 1.0)
     }
     
     @IBAction func pressEigthButton(_ sender: Any) {
-        metronome.setDivisor(2.0)
+        setDivisor(divisor: 2.0)
     }
     
     @IBAction func pressTripletButton(_ sender: Any) {
-        metronome.setDivisor(3.0)
+        setDivisor(divisor: 3.0)
     }
     
     @IBAction func pressSixteenthButton(_ sender: Any) {
-        metronome.setDivisor(4.0)
+        setDivisor(divisor: 4.0)
+    }
+    
+    func setDivisor(divisor: Double) {
+        metronome.stop { (running) in
+            self.playButton.setRunState(running: running)
+            if !running {
+                self.metronome.setDivisor(divisor)
+                self.metronome.start(completion: { (running) in
+                    self.playButton.setRunState(running: running)
+                })
+            }
+        }
     }
     
     func setDivButtonState(_ state: Notification) {

@@ -35,67 +35,59 @@ class Metronome {
         
         // Set button state on divisor change
         var whichClick = 1
-        var currTime = CFAbsoluteTimeGetCurrent()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.0036, repeats: true) { (timer) in
-
+        // First beat 1 of the loop
+        self.clickOne.playSound(withFlash: true)
+        
+        // Metronome loop
+        timer = Timer.scheduledTimer(withTimeInterval: getBpm(), repeats: true) { (timer) in
+            
             DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global()).async {
                 
-                // Invalidate timer loop
-                if !self.isRunning {
-                    timer.invalidate()
-                }
-                
-                if self.isRunning && (CFAbsoluteTimeGetCurrent() - currTime >= self.getBpm()) {
-                    
-                    // Reset the current time
-                    currTime = CFAbsoluteTimeGetCurrent()
-                    
-                    // Play the sound
-                    switch whichClick {
-                    case 2:
-                        if self.divisor >= 2.0 {
-                            self.clickTwoLow.playSound(withFlash: false)
-                            if self.divisor > 2.0 {
-                                whichClick = 3
-                            } else {
-                                whichClick = 1
-                            }
+                // Play the sound
+                switch whichClick {
+                case 2:
+                    if self.divisor >= 2.0 {
+                        self.clickTwoLow.playSound(withFlash: false)
+                        if self.divisor > 2.0 {
+                            whichClick = 3
                         } else {
-                            self.clickTwo.playSound(withFlash: true)
                             whichClick = 1
                         }
-                        break
-                        
-                    case 3:
-                        if self.divisor >= 3.0 {
-                            self.clickThreeLow.playSound(withFlash: false)
-                            if self.divisor > 3.0 {
-                                whichClick = 4
-                            } else {
-                                whichClick = 1
-                            }
-                        } else {
-                            self.clickThree.playSound(withFlash: true)
-                            whichClick = 4
-                        }
-                        break
-                        
-                    case 4:
-                        if self.divisor >= 4.0 {
-                            self.clickFourLow.playSound(withFlash: false)
-                        } else {
-                            self.clickFour.playSound(withFlash: true)
-                        }
+                    } else {
+                        self.clickTwo.playSound(withFlash: true)
                         whichClick = 1
-                        break
-                        
-                    default:
-                        self.clickOne.playSound(withFlash: true)
-                        whichClick = 2
                     }
+                    break
                     
+                case 3:
+                    if self.divisor >= 3.0 {
+                        self.clickThreeLow.playSound(withFlash: false)
+                        if self.divisor > 3.0 {
+                            whichClick = 4
+                        } else {
+                            whichClick = 1
+                        }
+                    } else {
+                        self.clickThree.playSound(withFlash: true)
+                        whichClick = 4
+                    }
+                    break
+                    
+                case 4:
+                    if self.divisor >= 4.0 {
+                        self.clickFourLow.playSound(withFlash: false)
+                    } else {
+                        self.clickFour.playSound(withFlash: true)
+                    }
+                    whichClick = 1
+                    break
+                    
+                default:
+                    self.clickOne.playSound(withFlash: true)
+                    whichClick = 2
                 }
+                
             }
         }
         
@@ -153,6 +145,7 @@ class Metronome {
     
     func stop (completion: @escaping (_ running: Bool) -> Void) {
         isRunning = false
+        timer.invalidate()
         completion(isRunning)
     }
     
