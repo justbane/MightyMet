@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     var metronome: Metronome!
 
     @IBOutlet weak var BPMSelector: BPMSelectorView!
-    @IBOutlet weak var HertzSelector: HertzSelectorView!
     @IBOutlet weak var playButton: PlayButton!
     @IBOutlet weak var playListButton: PlaylistButton!
     @IBOutlet weak var tempoLight: TempoLight!
@@ -22,56 +21,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var eigthButton: EighthButton!
     @IBOutlet weak var tripletButton: TripletButton!
     @IBOutlet weak var sixteenthButton: SixteenthButton!
+    @IBOutlet weak var tapTempoButton: TapTempo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        Set background
-//        let background = Gradients(colorString: "blue").getGradient()
-//        background.frame = self.view.bounds
-//        self.view.layer.insertSublayer(background, at: 0)
+        // Set background
+        let background = Gradients(colorString: "blue").getGradient()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, at: 0)
         
-        // Initial metronome settings
+        // MARK: Initial metronome settings
         BPMSelector.setBpmAngle(88.0)
         BPMSelector.setBpmText(88.0)
-        HertzSelector.setHertzAngle(135.0)
-        HertzSelector.setHertzText(135.0)
         
-        // Setup the gesture for the bmp selector
+        // MARK: Setup the gesture for the bmp selector
         let bpmRecognizer = XMCircleGestureRecognizer(midPoint: BPMSelector.center, innerRadius:100, outerRadius:140, target: self, action: #selector(rotateBPMGesture(recognizer:)))
         // Attach gesture to view
         self.view.addGestureRecognizer(bpmRecognizer)
         
-        let hertzRecognizer = XMCircleGestureRecognizer(midPoint: HertzSelector.center, innerRadius:55, outerRadius:95, target: self, action: #selector(rotateHertzGesture(recognizer:)))
-        // Attach gesture to view
-        self.view.addGestureRecognizer(hertzRecognizer)
-        
-        // Play button observer
+        // MARK: Play button observer
         NotificationCenter.default.addObserver(self, selector: #selector(setPlayButtonState), name: NSNotification.Name(rawValue: "metStateChange"), object: nil)
         
-        // Tempo light observer
+        // MARK: Tempo light observer
         NotificationCenter.default.addObserver(self, selector: #selector(flashTempo), name: NSNotification.Name(rawValue: "tempoFlash"), object: nil)
         
-        // Set button state on divisor change
+        // MARK: Set button state on divisor change
         NotificationCenter.default.addObserver(self, selector: #selector(setDivButtonState), name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil)
         
-        // Set timer validity on app inactive
+        // MARK: Set timer validity on app inactive
         NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         
-        // Setup the met object
+        // MARK: Init metronome
         metronome = Metronome()
         metronome.setDivisor(1.0)
-        metronome.start { (running) in
-            if running {
-                self.playButton.setRunState(running: running)
-            }
-        }
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +64,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Rotate BPM action
     func rotateBPMGesture(recognizer:XMCircleGestureRecognizer)
     {
         // Stop the met while we change tempo
@@ -92,24 +78,15 @@ class ViewController: UIViewController {
             self.BPMSelector.setBpmText(angle)
             self.metronome.setFrequency(Double(angle))
         }
-        // Reset metronome woth new frequency
+        // Reset metronome with new frequency
         if recognizer.state == .ended {
             metronome.start(completion: { (running) in
                 self.playButton.setRunState(running: running)
             })
         }
     }
-    
-    func rotateHertzGesture(recognizer:XMCircleGestureRecognizer)
-    {
-        if let angle = recognizer.angle?.degrees {
-            // Angle is the absolute angle for the current gesture in radians
-            HertzSelector.setHertzAngle(angle)
-            HertzSelector.setHertzText(angle)
-            metronome.setSound(Double(angle))
-        }
-    }
 
+    // MARK: Press play
     @IBAction func pressPlay(_ sender: PlayButton) {
         if metronome.isRunning {
             metronome.stop(completion: { (running) in
@@ -166,6 +143,31 @@ class ViewController: UIViewController {
     
     @IBAction func pressSixteenthButton(_ sender: Any) {
         setDivisor(divisor: 4.0)
+    }
+    
+    // MARK: Tap Tempo
+    @IBAction func pressTapTempo(_ sender: TapTempo) {
+        
+        if sender.isTapped {
+            sender.secondPress = Date().millisecondsSince1970
+            metronome.setFrequency(60000 / (sender.secondPress! - sender.firstPress!))
+            metronome.stop(completion: { (running) in
+                self.playButton.setRunState(running: running)
+                if !running {
+                    self.metronome.start(completion: { (running) in
+                        self.playButton.setRunState(running: running)
+                        self.BPMSelector.setBpmText(CGFloat(self.metronome.getFrequency()))
+                        self.BPMSelector.setBpmAngle(CGFloat(self.metronome.getFrequency()))
+                    })
+                }
+            })
+            sender.firstPress = 0
+            sender.secondPress = 0
+        } else {
+            sender.firstPress = Date().millisecondsSince1970
+        }
+        
+        sender.setState()
     }
     
     func setDivisor(divisor: Double) {

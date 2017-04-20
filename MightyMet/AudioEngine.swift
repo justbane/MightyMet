@@ -45,6 +45,7 @@ struct AudioEngine {
         // Setup and connect mixer to engine (engine needs an oputput)
         let mainMixer = engine.mainMixerNode
         engine.connect(audioPlayerNode, to: mainMixer, format: audioFileBuffer.format)
+        engine.prepare()
         
         // Set mixer output volume
         mainMixer.outputVolume = 0.9
@@ -56,7 +57,6 @@ struct AudioEngine {
         // Stop and reset the player node and engine
         audioPlayerNode.stop()
         engine.stop()
-        engine.reset()
         
         // Start the engine
         do {

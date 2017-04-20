@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,14 +42,6 @@
                                     <constraint firstAttribute="trailing" secondItem="uAy-w1-lGl" secondAttribute="trailing" constant="32" id="oAW-qJ-6gi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-Tt-WCh" customClass="HertzSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="87.5" y="382" width="200" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="HKb-Dd-1Ke"/>
-                                    <constraint firstAttribute="height" constant="200" id="Zf5-pN-m3G"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TU-ku-SOz" customClass="PlayButton" customModule="MightyMet">
                                 <rect key="frame" x="259" y="354" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -72,19 +64,8 @@
                                     <action selector="pressPlayList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VZI-c6-e3b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhQ-dx-uTX" customClass="SixteenthButton" customModule="MightyMet">
-                                <rect key="frame" x="271" y="538" width="66" height="62"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="OLE-wH-vwI"/>
-                                    <constraint firstAttribute="height" constant="62" id="bcP-cA-ZYQ"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="pressSixteenthButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oUQ-jP-phj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Y-Mk-U1e" customClass="QuarterButton" customModule="MightyMet">
-                                <rect key="frame" x="37.5" y="538" width="66" height="62"/>
+                                <rect key="frame" x="37" y="538" width="66" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="2VU-By-EKC"/>
@@ -92,17 +73,6 @@
                                 </constraints>
                                 <connections>
                                     <action selector="pressQuarterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2V0-Hq-7lj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3T-YF-B6h" customClass="TripletButton" customModule="MightyMet">
-                                <rect key="frame" x="197" y="590" width="66" height="62"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="9q4-Kq-9R1"/>
-                                    <constraint firstAttribute="width" constant="66" id="DN6-Tg-PjJ"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="pressTripletButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knN-br-K8V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRm-KB-BdO" customClass="EighthButton" customModule="MightyMet">
@@ -116,31 +86,62 @@
                                     <action selector="pressEigthButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DLc-8C-OEK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3T-YF-B6h" customClass="TripletButton" customModule="MightyMet">
+                                <rect key="frame" x="197" y="590" width="66" height="62"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="9q4-Kq-9R1"/>
+                                    <constraint firstAttribute="width" constant="66" id="DN6-Tg-PjJ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pressTripletButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knN-br-K8V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhQ-dx-uTX" customClass="SixteenthButton" customModule="MightyMet">
+                                <rect key="frame" x="271" y="538" width="66" height="62"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="OLE-wH-vwI"/>
+                                    <constraint firstAttribute="height" constant="62" id="bcP-cA-ZYQ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pressSixteenthButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oUQ-jP-phj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-zX-a5Y" customClass="TapTempo" customModule="MightyMet" customModuleProvider="target">
+                                <rect key="frame" x="137" y="400" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ut8-Ep-XPD"/>
+                                    <constraint firstAttribute="height" constant="100" id="wdd-26-pLB"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pressTapTempo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SqX-jF-QhX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20390349629999999" green="0.28483200069999998" blue="0.36821466679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Ics-nh-aMp" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="-8" id="2G9-V6-XxD"/>
-                            <constraint firstItem="lRm-KB-BdO" firstAttribute="top" secondItem="WAx-Tt-WCh" secondAttribute="bottom" constant="8" id="7aB-Y8-DXz"/>
                             <constraint firstItem="0TU-ku-SOz" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="-8" id="9He-fx-8Mr"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="leading" secondItem="J3T-YF-B6h" secondAttribute="trailing" constant="-175.5" id="RD2-Do-LYR"/>
-                            <constraint firstItem="Q7Y-Mk-U1e" firstAttribute="top" secondItem="WAx-Tt-WCh" secondAttribute="bottom" constant="-44" id="RVc-wa-vGz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="J3T-YF-B6h" secondAttribute="bottom" constant="15" id="Bhn-mv-jy6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YhQ-dx-uTX" secondAttribute="bottom" constant="67" id="GuE-W9-zXr"/>
+                            <constraint firstItem="Q7Y-Mk-U1e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="Qzx-KJ-Jhc"/>
                             <constraint firstItem="A38-uT-bri" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="Uf1-a0-eCf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Q7Y-Mk-U1e" secondAttribute="bottom" constant="67" id="UxU-Ju-GGs"/>
                             <constraint firstItem="0TU-ku-SOz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WeT-kE-6Tp"/>
-                            <constraint firstItem="YhQ-dx-uTX" firstAttribute="top" secondItem="WAx-Tt-WCh" secondAttribute="bottom" constant="-44" id="dRF-Iu-J7N"/>
+                            <constraint firstItem="fTl-zX-a5Y" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="38" id="b15-Ce-NWz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lRm-KB-BdO" secondAttribute="bottom" constant="15" id="cag-rF-kws"/>
                             <constraint firstItem="Ics-nh-aMp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fGf-3J-fMU"/>
                             <constraint firstItem="A38-uT-bri" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fMq-z9-okD"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="top" secondItem="A38-uT-bri" secondAttribute="bottom" constant="20" id="gg4-aS-qbe"/>
-                            <constraint firstItem="YhQ-dx-uTX" firstAttribute="leading" secondItem="WAx-Tt-WCh" secondAttribute="trailing" constant="-16" id="jS9-Uf-rcR"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pcr-93-Dw8"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="leading" secondItem="Q7Y-Mk-U1e" secondAttribute="trailing" constant="-16" id="qcx-mI-2nv"/>
-                            <constraint firstItem="J3T-YF-B6h" firstAttribute="top" secondItem="WAx-Tt-WCh" secondAttribute="bottom" constant="8" id="tx8-hb-o1a"/>
-                            <constraint firstItem="WAx-Tt-WCh" firstAttribute="leading" secondItem="lRm-KB-BdO" secondAttribute="trailing" constant="-89.5" id="zwR-Om-udD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YhQ-dx-uTX" secondAttribute="trailing" constant="22" id="iV0-8d-aXa"/>
+                            <constraint firstItem="lRm-KB-BdO" firstAttribute="leading" secondItem="Q7Y-Mk-U1e" secondAttribute="trailing" constant="8" id="isy-tM-xIQ"/>
+                            <constraint firstItem="YhQ-dx-uTX" firstAttribute="leading" secondItem="J3T-YF-B6h" secondAttribute="trailing" constant="8" id="lhH-3d-8Le"/>
+                            <constraint firstItem="fTl-zX-a5Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nvl-Ne-77g"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BPMSelector" destination="A38-uT-bri" id="j22-lO-QiM"/>
-                        <outlet property="HertzSelector" destination="WAx-Tt-WCh" id="i7Z-KS-Wz0"/>
                         <outlet property="eigthButton" destination="lRm-KB-BdO" id="Jg5-or-Wpv"/>
                         <outlet property="playButton" destination="0TU-ku-SOz" id="2q0-H2-ue4"/>
                         <outlet property="playListButton" destination="Ics-nh-aMp" id="onR-8e-vZp"/>

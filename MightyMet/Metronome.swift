@@ -13,7 +13,7 @@ class Metronome {
     var timer: Timer! = nil
     var frequency: Double = 88.0
     var divisor: Double = 1.0
-    var isRunning: Bool = true
+    var isRunning: Bool = false
     
     var sound: String = "clave"
     var lowSound: String = "clave-low"
@@ -43,52 +43,48 @@ class Metronome {
                 // Metronome loop
                 self.timer = Timer.scheduledTimer(withTimeInterval: self.getBpm(), repeats: true) { (timer) in
                     
-                    DispatchQueue(label: "MightyMet", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global()).async {
-                        
-                        // Play the sound
-                        switch whichClick {
-                        case 2:
-                            if self.divisor >= 2.0 {
-                                self.clickTwoLow.playSound(withFlash: false)
-                                if self.divisor > 2.0 {
-                                    whichClick = 3
-                                } else {
-                                    whichClick = 1
-                                }
+                    // Play the sound
+                    switch whichClick {
+                    case 2:
+                        if self.divisor >= 2.0 {
+                            self.clickTwoLow.playSound(withFlash: false)
+                            if self.divisor > 2.0 {
+                                whichClick = 3
                             } else {
-                                self.clickTwo.playSound(withFlash: true)
                                 whichClick = 1
                             }
-                            break
-                            
-                        case 3:
-                            if self.divisor >= 3.0 {
-                                self.clickThreeLow.playSound(withFlash: false)
-                                if self.divisor > 3.0 {
-                                    whichClick = 4
-                                } else {
-                                    whichClick = 1
-                                }
-                            } else {
-                                self.clickThree.playSound(withFlash: true)
-                                whichClick = 4
-                            }
-                            break
-                            
-                        case 4:
-                            if self.divisor >= 4.0 {
-                                self.clickFourLow.playSound(withFlash: false)
-                            } else {
-                                self.clickFour.playSound(withFlash: true)
-                            }
+                        } else {
+                            self.clickTwo.playSound(withFlash: true)
                             whichClick = 1
-                            break
-                            
-                        default:
-                            self.clickOne.playSound(withFlash: true)
-                            whichClick = 2
                         }
+                        break
                         
+                    case 3:
+                        if self.divisor >= 3.0 {
+                            self.clickThreeLow.playSound(withFlash: false)
+                            if self.divisor > 3.0 {
+                                whichClick = 4
+                            } else {
+                                whichClick = 1
+                            }
+                        } else {
+                            self.clickThree.playSound(withFlash: true)
+                            whichClick = 4
+                        }
+                        break
+                        
+                    case 4:
+                        if self.divisor >= 4.0 {
+                            self.clickFourLow.playSound(withFlash: false)
+                        } else {
+                            self.clickFour.playSound(withFlash: true)
+                        }
+                        whichClick = 1
+                        break
+                        
+                    default:
+                        self.clickOne.playSound(withFlash: true)
+                        whichClick = 2
                     }
                 }
         }
@@ -96,9 +92,14 @@ class Metronome {
     }
     
     func getBpm() -> Double {
-        return (60 / self.frequency) / self.divisor
+        let numberOfPlaces = 3.0
+        let multiplier = pow(10.0, numberOfPlaces)
+        let num = (60 / self.frequency) / self.divisor
+        let rounded = round(num * multiplier) / multiplier
+        return rounded
     }
     
+    // MARK: Get/set frequency
     func setFrequency(_ value: Double) {
         self.frequency = value
     }
@@ -107,47 +108,21 @@ class Metronome {
         return self.frequency
     }
     
+    // MARK: Set divisor
     func setDivisor(_ value: Double) {
         self.divisor = value
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil, userInfo: ["divisorValue":value])
     }
     
     func setSound(_ value: Double) {
-        
-        if (value >= 180.00) && (value <= 270.00) {
-            self.sound = "beep"
-        }
-        if (value > 270.00) && (value < 360.00) {
-            self.sound = "drum"
-        }
-        if (value >= 0.0) && (value <= 90.00) {
-            self.sound = "tink"
-        }
-        if (value > 90) && (value < 180.00) {
-            self.sound = "clave"
-        }
-        
-        self.lowSound = "\(self.sound)-low"
-        
-        
-        // Set sounds in class
-        clickOne = AudioEngine(sound: sound)
-        clickOneLow = AudioEngine(sound: lowSound)
-        
-        clickTwo = AudioEngine(sound: sound)
-        clickTwoLow = AudioEngine(sound: lowSound)
-        
-        clickThree = AudioEngine(sound: sound)
-        clickThreeLow = AudioEngine(sound: lowSound)
-        
-        clickFour = AudioEngine(sound: sound)
-        clickFourLow = AudioEngine(sound: lowSound)
-        
+        // TODO: Set sounds
     }
     
     func stop (completion: @escaping (_ running: Bool) -> Void) {
-        isRunning = false
-        timer.invalidate()
+        if isRunning {
+            isRunning = false
+            timer.invalidate()
+        }
         completion(isRunning)
     }
     
@@ -162,5 +137,9 @@ class Metronome {
 extension Date {
     var nanosecondsSince1970:Double {
         return Double(((self.timeIntervalSince1970 * 1000) * 1000000))
+    }
+    
+    var millisecondsSince1970:Double {
+        return Double(self.timeIntervalSince1970 * 1000)
     }
 }

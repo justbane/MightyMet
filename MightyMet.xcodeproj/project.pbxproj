@@ -17,20 +17,14 @@
 		39628C1C1E3091A300900912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1A1E3091A300900912 /* Main.storyboard */; };
 		39628C1E1E3091A300900912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1D1E3091A300900912 /* Assets.xcassets */; };
 		39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1F1E3091A300900912 /* LaunchScreen.storyboard */; };
-		39829D381E766A3F007DAC41 /* beep-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D301E766A3F007DAC41 /* beep-low.wav */; };
-		39829D391E766A3F007DAC41 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D311E766A3F007DAC41 /* beep.wav */; };
+		398181981EA41122007ED5CF /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398181971EA41122007ED5CF /* TapTempo.swift */; };
 		39829D3A1E766A3F007DAC41 /* clave-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D321E766A3F007DAC41 /* clave-low.wav */; };
 		39829D3B1E766A3F007DAC41 /* clave.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D331E766A3F007DAC41 /* clave.wav */; };
-		39829D3C1E766A3F007DAC41 /* drum-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D341E766A3F007DAC41 /* drum-low.wav */; };
-		39829D3D1E766A3F007DAC41 /* drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D351E766A3F007DAC41 /* drum.wav */; };
-		39829D3E1E766A3F007DAC41 /* tink-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D361E766A3F007DAC41 /* tink-low.wav */; };
-		39829D3F1E766A3F007DAC41 /* tink.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D371E766A3F007DAC41 /* tink.wav */; };
 		399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043341E3F0B1400BC19EB /* PlayButton.swift */; };
 		399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043361E3F0C8100BC19EB /* PlaylistButton.swift */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
 		39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B2ED421E51829A004DFE28 /* AudioEngine.swift */; };
 		39B983291E3875A100BCAF89 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B983281E3875A100BCAF89 /* Gradients.swift */; };
-		39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
 		39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */; };
@@ -51,20 +45,14 @@
 		39628C1D1E3091A300900912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39628C201E3091A300900912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39628C221E3091A300900912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39829D301E766A3F007DAC41 /* beep-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-low.wav"; sourceTree = "<group>"; };
-		39829D311E766A3F007DAC41 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		398181971EA41122007ED5CF /* TapTempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapTempo.swift; sourceTree = "<group>"; };
 		39829D321E766A3F007DAC41 /* clave-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "clave-low.wav"; sourceTree = "<group>"; };
 		39829D331E766A3F007DAC41 /* clave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave.wav; sourceTree = "<group>"; };
-		39829D341E766A3F007DAC41 /* drum-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "drum-low.wav"; sourceTree = "<group>"; };
-		39829D351E766A3F007DAC41 /* drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drum.wav; sourceTree = "<group>"; };
-		39829D361E766A3F007DAC41 /* tink-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "tink-low.wav"; sourceTree = "<group>"; };
-		39829D371E766A3F007DAC41 /* tink.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tink.wav; sourceTree = "<group>"; };
 		399043341E3F0B1400BC19EB /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		399043361E3F0C8100BC19EB /* PlaylistButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistButton.swift; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		39B2ED421E51829A004DFE28 /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		39B983281E3875A100BCAF89 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
-		39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HertzSelectorView.swift; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
 		39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempoLight.swift; sourceTree = "<group>"; };
@@ -144,7 +132,6 @@
 				3914684A1E34884800CFBB5D /* MightyMetUI.swift */,
 				39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */,
 				39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */,
-				39D3A2971E37B72C00794CFC /* HertzSelectorView.swift */,
 				39B983281E3875A100BCAF89 /* Gradients.swift */,
 				399043341E3F0B1400BC19EB /* PlayButton.swift */,
 				399043361E3F0C8100BC19EB /* PlaylistButton.swift */,
@@ -153,6 +140,7 @@
 				39009B4B1E6D3FA100697FD9 /* SixteenthButton.swift */,
 				39009B4D1E6D410F00697FD9 /* QuarterButton.swift */,
 				39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */,
+				398181971EA41122007ED5CF /* TapTempo.swift */,
 			);
 			name = UIClasses;
 			sourceTree = "<group>";
@@ -160,14 +148,8 @@
 		39FB259C1E3C73840008974F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				39829D301E766A3F007DAC41 /* beep-low.wav */,
-				39829D311E766A3F007DAC41 /* beep.wav */,
 				39829D321E766A3F007DAC41 /* clave-low.wav */,
 				39829D331E766A3F007DAC41 /* clave.wav */,
-				39829D341E766A3F007DAC41 /* drum-low.wav */,
-				39829D351E766A3F007DAC41 /* drum.wav */,
-				39829D361E766A3F007DAC41 /* tink-low.wav */,
-				39829D371E766A3F007DAC41 /* tink.wav */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -257,18 +239,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39829D3D1E766A3F007DAC41 /* drum.wav in Resources */,
-				39829D3E1E766A3F007DAC41 /* tink-low.wav in Resources */,
 				39829D3B1E766A3F007DAC41 /* clave.wav in Resources */,
-				39829D391E766A3F007DAC41 /* beep.wav in Resources */,
 				39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */,
 				39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */,
-				39829D3F1E766A3F007DAC41 /* tink.wav in Resources */,
-				39829D3C1E766A3F007DAC41 /* drum-low.wav in Resources */,
 				39628C1E1E3091A300900912 /* Assets.xcassets in Resources */,
 				39628C1C1E3091A300900912 /* Main.storyboard in Resources */,
 				39829D3A1E766A3F007DAC41 /* clave-low.wav in Resources */,
-				39829D381E766A3F007DAC41 /* beep-low.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +306,7 @@
 				39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */,
 				39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */,
 				39009B481E6D269F00697FD9 /* TripletButton.swift in Sources */,
+				398181981EA41122007ED5CF /* TapTempo.swift in Sources */,
 				399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */,
 				399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */,
 				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
@@ -337,7 +314,6 @@
 				39B983291E3875A100BCAF89 /* Gradients.swift in Sources */,
 				39009B4C1E6D3FA100697FD9 /* SixteenthButton.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
-				39D3A2981E37B72C00794CFC /* HertzSelectorView.swift in Sources */,
 				39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
 				39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */,
