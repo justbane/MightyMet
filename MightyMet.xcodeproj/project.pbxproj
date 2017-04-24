@@ -28,6 +28,8 @@
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
 		39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */; };
+		39ECB9FB1EA9C4A800B6D704 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECB9FA1EA9C4A800B6D704 /* TitleLabel.swift */; };
+		39ECB9FD1EA9CA8C00B6D704 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECB9FC1EA9CA8C00B6D704 /* PlaylistViewController.swift */; };
 		39EF2E4B1E6DCAFF008FF6EC /* EighthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */; };
 		3AF00380571516B964708CD6 /* Pods_MightyMet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63508F748E1C94EE753011F /* Pods_MightyMet.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,8 @@
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
 		39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempoLight.swift; sourceTree = "<group>"; };
+		39ECB9FA1EA9C4A800B6D704 /* TitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		39ECB9FC1EA9CA8C00B6D704 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthButton.swift; sourceTree = "<group>"; };
 		65BD912CE2952922DB5C34BA /* Pods-MightyMet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.release.xcconfig"; sourceTree = "<group>"; };
 		9064E0C1E3168B848099190D /* Pods-MightyMet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MightyMet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MightyMet/Pods-MightyMet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				39158C9C1E5A2D0600B9D812 /* Views */,
 				39628C161E3091A300900912 /* AppDelegate.swift */,
 				39628C181E3091A300900912 /* ViewController.swift */,
+				39ECB9FC1EA9CA8C00B6D704 /* PlaylistViewController.swift */,
 				39628C1D1E3091A300900912 /* Assets.xcassets */,
 				39628C1F1E3091A300900912 /* LaunchScreen.storyboard */,
 				39628C221E3091A300900912 /* Info.plist */,
@@ -141,6 +146,7 @@
 				39009B4D1E6D410F00697FD9 /* QuarterButton.swift */,
 				39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */,
 				398181971EA41122007ED5CF /* TapTempo.swift */,
+				39ECB9FA1EA9C4A800B6D704 /* TitleLabel.swift */,
 			);
 			name = UIClasses;
 			sourceTree = "<group>";
@@ -317,8 +323,10 @@
 				39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
 				39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */,
+				39ECB9FD1EA9CA8C00B6D704 /* PlaylistViewController.swift in Sources */,
 				39EF2E4B1E6DCAFF008FF6EC /* EighthButton.swift in Sources */,
 				39628C171E3091A300900912 /* AppDelegate.swift in Sources */,
+				39ECB9FB1EA9C4A800B6D704 /* TitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

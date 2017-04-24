@@ -22,8 +22,6 @@ struct Gradients {
     
     init(colorString: String) {
         
-        
-        
         blueColor = MightyMetUI.blue
         darkblueColor = MightyMetUI.darkBlue
         

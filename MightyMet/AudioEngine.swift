@@ -19,6 +19,14 @@ struct AudioEngine {
     
     init(sound: String) {
         
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            try session.setActive(true)
+        } catch {
+            print("Error setting secssion category and activating session")
+        }
+        
         self.engine = AVAudioEngine()
         
         let filePath = Bundle.main.path(forResource: sound, ofType: "wav")
