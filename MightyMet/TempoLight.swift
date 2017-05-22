@@ -20,7 +20,7 @@ class TempoLight: UIView {
     }
     
     func flash() {
-        DispatchQueue.main.async {
+        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main).async {
             let timeInterval = TimeInterval(0.05)
             // Turn it on
             Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
@@ -29,7 +29,7 @@ class TempoLight: UIView {
             }
             
             // Turn it off
-            Timer.scheduledTimer(withTimeInterval: (timeInterval + 0.05), repeats: false) { (timer) in
+            Timer.scheduledTimer(withTimeInterval: (timeInterval + 0.10), repeats: false) { (timer) in
                 self.flashOff()
             }
         }
@@ -37,7 +37,7 @@ class TempoLight: UIView {
     
     func flashOff() {
         isFlashing = false
-        DispatchQueue.main.async { 
+        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main).async {
             self.setNeedsDisplay()
         }
     }

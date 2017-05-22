@@ -12,11 +12,15 @@
 		39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39009B4D1E6D410F00697FD9 /* QuarterButton.swift */; };
 		3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3914684A1E34884800CFBB5D /* MightyMetUI.swift */; };
 		39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39359D101E369EB6004D4CC0 /* Metronome.swift */; };
+		395B000C1EB1B69900E929B0 /* DividerLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B000B1EB1B69900E929B0 /* DividerLine.swift */; };
+		395B000E1EB1B72900E929B0 /* AdditionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B000D1EB1B72900E929B0 /* AdditionButton.swift */; };
 		39628C171E3091A300900912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C161E3091A300900912 /* AppDelegate.swift */; };
 		39628C191E3091A300900912 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39628C181E3091A300900912 /* ViewController.swift */; };
 		39628C1C1E3091A300900912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1A1E3091A300900912 /* Main.storyboard */; };
 		39628C1E1E3091A300900912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1D1E3091A300900912 /* Assets.xcassets */; };
 		39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39628C1F1E3091A300900912 /* LaunchScreen.storyboard */; };
+		397956B21EAF0C5800063CC1 /* AuthenticatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397956B11EAF0C5800063CC1 /* AuthenticatedViewController.swift */; };
+		397956B41EAF0F8200063CC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397956B31EAF0F8200063CC1 /* LoginViewController.swift */; };
 		398181981EA41122007ED5CF /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398181971EA41122007ED5CF /* TapTempo.swift */; };
 		39829D3A1E766A3F007DAC41 /* clave-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D321E766A3F007DAC41 /* clave-low.wav */; };
 		39829D3B1E766A3F007DAC41 /* clave.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D331E766A3F007DAC41 /* clave.wav */; };
@@ -40,6 +44,8 @@
 		39009B4D1E6D410F00697FD9 /* QuarterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterButton.swift; sourceTree = "<group>"; };
 		3914684A1E34884800CFBB5D /* MightyMetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MightyMetUI.swift; sourceTree = "<group>"; };
 		39359D101E369EB6004D4CC0 /* Metronome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
+		395B000B1EB1B69900E929B0 /* DividerLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerLine.swift; sourceTree = "<group>"; };
+		395B000D1EB1B72900E929B0 /* AdditionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionButton.swift; sourceTree = "<group>"; };
 		39628C131E3091A300900912 /* MightyMet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MightyMet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39628C161E3091A300900912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39628C181E3091A300900912 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		39628C1D1E3091A300900912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39628C201E3091A300900912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39628C221E3091A300900912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		397956B11EAF0C5800063CC1 /* AuthenticatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedViewController.swift; sourceTree = "<group>"; };
+		397956B31EAF0F8200063CC1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		398181971EA41122007ED5CF /* TapTempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapTempo.swift; sourceTree = "<group>"; };
 		39829D321E766A3F007DAC41 /* clave-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "clave-low.wav"; sourceTree = "<group>"; };
 		39829D331E766A3F007DAC41 /* clave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave.wav; sourceTree = "<group>"; };
@@ -121,6 +129,8 @@
 				39DC7C461E355D6000E0B849 /* UIClasses */,
 				39158C9C1E5A2D0600B9D812 /* Views */,
 				39628C161E3091A300900912 /* AppDelegate.swift */,
+				397956B11EAF0C5800063CC1 /* AuthenticatedViewController.swift */,
+				397956B31EAF0F8200063CC1 /* LoginViewController.swift */,
 				39628C181E3091A300900912 /* ViewController.swift */,
 				39ECB9FC1EA9CA8C00B6D704 /* PlaylistViewController.swift */,
 				39628C1D1E3091A300900912 /* Assets.xcassets */,
@@ -135,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				3914684A1E34884800CFBB5D /* MightyMetUI.swift */,
+				395B000B1EB1B69900E929B0 /* DividerLine.swift */,
 				39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */,
 				39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */,
 				39B983281E3875A100BCAF89 /* Gradients.swift */,
@@ -147,6 +158,7 @@
 				39EF2E4A1E6DCAFF008FF6EC /* EighthButton.swift */,
 				398181971EA41122007ED5CF /* TapTempo.swift */,
 				39ECB9FA1EA9C4A800B6D704 /* TitleLabel.swift */,
+				395B000D1EB1B72900E929B0 /* AdditionButton.swift */,
 			);
 			name = UIClasses;
 			sourceTree = "<group>";
@@ -190,6 +202,7 @@
 				39628C111E3091A300900912 /* Resources */,
 				D4D77C6C2FDF480B66A76055 /* [CP] Embed Pods Frameworks */,
 				D422001A9AF8CC46D111B338 /* [CP] Copy Pods Resources */,
+				39FFABB51ECDF90B008669A9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,6 +270,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39FFABB51ECDF90B008669A9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 881244d0eb20fb73d9e0462c3ee087a4e03dd89c c4dd761352933cc5f08c984b4d9c236de403fad80cc4ffe681475431a1a2a595";
+		};
 		D422001A9AF8CC46D111B338 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,14 +336,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */,
+				395B000E1EB1B72900E929B0 /* AdditionButton.swift in Sources */,
 				39359D111E369EB6004D4CC0 /* Metronome.swift in Sources */,
 				39009B481E6D269F00697FD9 /* TripletButton.swift in Sources */,
 				398181981EA41122007ED5CF /* TapTempo.swift in Sources */,
 				399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */,
 				399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */,
+				397956B21EAF0C5800063CC1 /* AuthenticatedViewController.swift in Sources */,
 				39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */,
+				397956B41EAF0F8200063CC1 /* LoginViewController.swift in Sources */,
 				39628C191E3091A300900912 /* ViewController.swift in Sources */,
 				39B983291E3875A100BCAF89 /* Gradients.swift in Sources */,
+				395B000C1EB1B69900E929B0 /* DividerLine.swift in Sources */,
 				39009B4C1E6D3FA100697FD9 /* SixteenthButton.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
 				39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */,
@@ -451,6 +481,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4L5PVTT36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MightyMet",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MightyMet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = justinbane.com.MightyMet;
@@ -466,6 +501,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4L5PVTT36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MightyMet",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MightyMet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = justinbane.com.MightyMet;

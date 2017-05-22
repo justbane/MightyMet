@@ -28,9 +28,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Set background
-        let background = Gradients(colorString: "blue").getGradient()
-        background.frame = self.view.bounds
-        self.view.layer.insertSublayer(background, at: 0)
+        view.backgroundColor = MightyMetUI.darkBlue
         
         // MARK: Initial metronome settings
         BPMSelector.setBpmAngle(88.0)
@@ -50,8 +48,8 @@ class ViewController: UIViewController {
         // MARK: Set button state on divisor change
         NotificationCenter.default.addObserver(self, selector: #selector(setDivButtonState), name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil)
         
-        // MARK: Set timer validity on app inactive
-        NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
+        // MARK: Set timer validity on WillResignActive
+        // NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
         
         // MARK: Init metronome
         metronome = Metronome()
@@ -123,6 +121,8 @@ class ViewController: UIViewController {
     
     func flashTempo() {
         self.tempoLight.flash()
+        // TODO: Implement background flash in settings
+        // flashBG()
     }
     
     @IBAction func pressPlayList(_ sender: PlaylistButton) {
@@ -190,6 +190,21 @@ class ViewController: UIViewController {
         eigthButton.setStateFromNotification(data["divisorValue"]!)
         tripletButton.setStateFromNotification(data["divisorValue"]!)
         sixteenthButton.setStateFromNotification(data["divisorValue"]!)
+    }
+    
+    func flashBG() {
+        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main).async {
+            let timeInterval = TimeInterval(0.05)
+            // Turn it on
+            Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
+                self.view.backgroundColor = MightyMetUI.midBlue
+            }
+            
+            // Turn it off
+            Timer.scheduledTimer(withTimeInterval: (timeInterval + 0.10), repeats: false) { (timer) in
+                self.view.backgroundColor = MightyMetUI.darkBlue
+            }
+        }
     }
 
 }
