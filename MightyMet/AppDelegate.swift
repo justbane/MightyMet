@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Fabric
 import TwitterKit
-
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,13 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Firebase
         FIRApp.configure()
         
+        
         // Prevent sleep
         UIApplication.shared.isIdleTimerDisabled = true
         
         // Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        Fabric.with([Twitter.self])
+        Fabric.with([Twitter.self, Crashlytics.self])
 
         return true
     }

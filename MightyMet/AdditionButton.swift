@@ -22,11 +22,13 @@ class AdditionButton: UIButton {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isTapped = true
         setNeedsDisplay()
+        super.touchesBegan(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isTapped = false
         setNeedsDisplay()
+        super.touchesEnded(touches, with: event)
     }
     
 

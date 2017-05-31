@@ -13,28 +13,18 @@ class Metronome {
     var timer: Timer! = nil
     var frequency: Double = 88.0
     var divisor: Double = 1.0
+    var signature = 4
     var isRunning: Bool = false
     
-    var sound: String = "clave"
-    var lowSound: String = "clave-low"
+    var one = AudioEngine(sound: "clave-high")
     
     var clickOne = AudioEngine(sound: "clave")
     var clickOneLow = AudioEngine(sound: "clave-low")
     
-    var clickTwo = AudioEngine(sound: "clave")
-    var clickTwoLow = AudioEngine(sound: "clave-low")
-    
-    var clickThree = AudioEngine(sound: "clave")
-    var clickThreeLow = AudioEngine(sound: "clave-low")
-    
-    var clickFour = AudioEngine(sound: "clave")
-    var clickFourLow = AudioEngine(sound: "clave-low")
-    
-    
     func generate() {
         
         // Set button state on divisor change
-        var whichClick = 1
+        var count = 1
         
         // Setup the Queue
         DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
@@ -43,49 +33,48 @@ class Metronome {
                 // Metronome loop
                 self.timer = Timer.scheduledTimer(withTimeInterval: self.getBpm(), repeats: true) { (timer) in
                     
-                    // Play the sound
-                    switch whichClick {
-                    case 2:
-                        if self.divisor >= 2.0 {
-                            self.clickTwoLow.playSound(withFlash: false)
-                            if self.divisor > 2.0 {
-                                whichClick = 3
-                            } else {
-                                whichClick = 1
-                            }
+                    // Play proper sound
+                    if count % Int(self.divisor) == 1 {
+                        if count == 1 {
+                            self.one.playSound(withFlash: true)
                         } else {
-                            self.clickTwo.playSound(withFlash: true)
-                            whichClick = 1
+                            self.clickOne.playSound(withFlash: true)
                         }
-                        break
-                        
-                    case 3:
-                        if self.divisor >= 3.0 {
-                            self.clickThreeLow.playSound(withFlash: false)
-                            if self.divisor > 3.0 {
-                                whichClick = 4
-                            } else {
-                                whichClick = 1
-                            }
+                    } else {
+                        if count == 1 {
+                            self.one.playSound(withFlash: true)
+                        } else if self.divisor == 1.0 && count > 1 {
+                            self.clickOne.playSound(withFlash: true)
                         } else {
-                            self.clickThree.playSound(withFlash: true)
-                            whichClick = 4
+                            self.clickOneLow.playSound(withFlash: false)
                         }
-                        break
                         
-                    case 4:
-                        if self.divisor >= 4.0 {
-                            self.clickFourLow.playSound(withFlash: false)
-                        } else {
-                            self.clickFour.playSound(withFlash: true)
-                        }
-                        whichClick = 1
-                        break
-                        
-                    default:
-                        self.clickOne.playSound(withFlash: true)
-                        whichClick = 2
                     }
+                    
+                    // Check/reset the count
+                    if self.divisor == 2.0 // Working with odd eiths times
+                        && self.signature > 4
+                        && (self.signature % 2) == 1 {
+                        if count == self.signature {
+                            count = 1
+                        } else {
+                            count += 1
+                        }
+                    } else if self.divisor == 3.0 // Working with 6/8 time
+                        && self.signature == 6 {
+                        if count == self.signature {
+                            count = 1
+                        } else {
+                            count += 1
+                        }
+                    } else { // Default even times and subdivisions
+                        if count < (self.signature * Int(self.divisor)) {
+                            count += 1
+                        } else {
+                            count = 1
+                        }
+                    }
+                    
                 }
         }
         
@@ -112,6 +101,21 @@ class Metronome {
     func setDivisor(_ value: Double) {
         self.divisor = value
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil, userInfo: ["divisorValue":value])
+    }
+    
+    func getDivisorFromText(name: String) -> (Divisor: Double, Name: String) {
+        switch name {
+            case "quarter":
+                return (Subdivisions.quarter.rawValue, name)
+            case "eighth":
+                return (Subdivisions.eighth.rawValue, name)
+            case "triplet":
+                return (Subdivisions.triplet.rawValue, name)
+            case "sixteenth":
+                return (Subdivisions.sixteenth.rawValue, name)
+            default:
+                return (Subdivisions.quarter.rawValue, name)
+        }
     }
     
     func setSound(_ value: Double) {

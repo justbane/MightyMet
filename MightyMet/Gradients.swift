@@ -22,7 +22,7 @@ struct Gradients {
     
     init(colorString: String) {
         
-        blueColor = MightyMetUI.blue
+        blueColor = MightyMetUI.midBlue
         darkblueColor = MightyMetUI.darkBlue
         
         orangeColor = MightyMetUI.yellow
@@ -67,9 +67,7 @@ struct Gradients {
     }
     
     func getGradient() -> CAGradientLayer {
-        
         return colorGrad
-        
     }
     
     // End class

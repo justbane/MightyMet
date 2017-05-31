@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import IBAnimatable
 
-class AuthenticatedViewController: UIViewController {
+class AuthenticatedViewController: AnimatableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

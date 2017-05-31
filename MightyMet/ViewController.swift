@@ -22,13 +22,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var tripletButton: TripletButton!
     @IBOutlet weak var sixteenthButton: SixteenthButton!
     @IBOutlet weak var tapTempoButton: TapTempo!
+    @IBOutlet weak var signatueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Set background
-        view.backgroundColor = MightyMetUI.darkBlue
+        // view.backgroundColor = MightyMetUI.darkBlue
+        let background = Gradients(colorString: "blue").getGradient()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, at: 0)
         
         // MARK: Initial metronome settings
         BPMSelector.setBpmAngle(88.0)
@@ -60,6 +64,13 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPlaylistViewSegue" {
+            let vc = segue.destination as? PlaylistViewController
+            vc?.mainMetronome = metronome
+        }
     }
     
     // MARK: Rotate BPM action
@@ -122,7 +133,7 @@ class ViewController: UIViewController {
     func flashTempo() {
         self.tempoLight.flash()
         // TODO: Implement background flash in settings
-        // flashBG()
+        flashBG()
     }
     
     @IBAction func pressPlayList(_ sender: PlaylistButton) {
@@ -130,19 +141,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressQuarterButton(_ sender: Any) {
-        setDivisor(divisor: 1.0)
+        setDivisor(divisor: Subdivisions.quarter.rawValue)
     }
     
     @IBAction func pressEigthButton(_ sender: Any) {
-        setDivisor(divisor: 2.0)
+        setDivisor(divisor: Subdivisions.eighth.rawValue)
     }
     
     @IBAction func pressTripletButton(_ sender: Any) {
-        setDivisor(divisor: 3.0)
+        setDivisor(divisor: Subdivisions.triplet.rawValue)
     }
     
     @IBAction func pressSixteenthButton(_ sender: Any) {
-        setDivisor(divisor: 4.0)
+        setDivisor(divisor: Subdivisions.sixteenth.rawValue)
     }
     
     // MARK: Tap Tempo
