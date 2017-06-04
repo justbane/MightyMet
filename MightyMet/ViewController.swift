@@ -8,10 +8,12 @@
 
 
 import UIKit
+import IBAnimatable
 
 class ViewController: UIViewController {
     
     var metronome: Metronome!
+    var background: CAGradientLayer!
 
     @IBOutlet weak var BPMSelector: BPMSelectorView!
     @IBOutlet weak var playButton: PlayButton!
@@ -22,7 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tripletButton: TripletButton!
     @IBOutlet weak var sixteenthButton: SixteenthButton!
     @IBOutlet weak var tapTempoButton: TapTempo!
-    @IBOutlet weak var signatueLabel: UILabel!
+    @IBOutlet weak var timeSignatureButton: AnimatableButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
         
         // Set background
         // view.backgroundColor = MightyMetUI.darkBlue
-        let background = Gradients(colorString: "blue").getGradient()
+        background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)
         
@@ -52,6 +54,9 @@ class ViewController: UIViewController {
         // MARK: Set button state on divisor change
         NotificationCenter.default.addObserver(self, selector: #selector(setDivButtonState), name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil)
         
+        // MARK: Reset divisor buttons
+        NotificationCenter.default.addObserver(self, selector: #selector(resetDivButtonState), name: NSNotification.Name(rawValue: "resetDivButtons"), object: nil)
+        
         // MARK: Set timer validity on WillResignActive
         // NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
         
@@ -59,6 +64,10 @@ class ViewController: UIViewController {
         metronome = Metronome()
         metronome.setDivisor(1.0)
 
+    }
+    
+    override func viewWillLayoutSubviews() {
+        background.frame = self.view.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +78,11 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPlaylistViewSegue" {
             let vc = segue.destination as? PlaylistViewController
-            vc?.mainMetronome = metronome
+            vc?.mainMetronomeView = self
+        }
+        if segue.identifier == "SetBeatsSegue" {
+            let vc = segue.destination as? SetTimeViewController
+            vc?.mainMetronomeView = self
         }
     }
     
@@ -201,6 +214,53 @@ class ViewController: UIViewController {
         eigthButton.setStateFromNotification(data["divisorValue"]!)
         tripletButton.setStateFromNotification(data["divisorValue"]!)
         sixteenthButton.setStateFromNotification(data["divisorValue"]!)
+    }
+    
+    func resetDivButtonState(_ signature: Notification) {
+        let data = signature.userInfo! as! [String: String]
+        
+        quarterButton.isEnabled = true
+        quarterButton.alpha = 1.0
+        eigthButton.isEnabled = true
+        eigthButton.alpha = 1.0
+        tripletButton.isEnabled = true
+        tripletButton.alpha = 1.0
+        sixteenthButton.isEnabled = true
+        sixteenthButton.alpha = 1.0
+        
+        switch data["signature"]! {
+        
+        case "5/8","7/8","9/8","11/8":
+            // set eighth divisor and button
+            metronome.setDivisor(2.0)
+            eigthButton.isEnabled = true
+            eigthButton.setStateFromNotification(2.0)
+            // disable the others
+            quarterButton.isEnabled = false
+            quarterButton.alpha = 0.3
+            tripletButton.isEnabled = false
+            tripletButton.alpha = 0.3
+            sixteenthButton.isEnabled = false
+            sixteenthButton.alpha = 0.3
+            
+        case "6/8","12/8":
+            // set eighth divisor and button
+            metronome.setDivisor(3.0)
+            tripletButton.isEnabled = true
+            tripletButton.setStateFromNotification(3.0)
+            // disable the others
+            quarterButton.isEnabled = false
+            quarterButton.alpha = 0.3
+            eigthButton.isEnabled = false
+            eigthButton.alpha = 0.3
+            sixteenthButton.isEnabled = false
+            sixteenthButton.alpha = 0.3
+            
+        default:
+            // Set divisor
+            metronome.setDivisor(1.0)
+        }
+        
     }
     
     func flashBG() {

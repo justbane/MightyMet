@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     let fbLoginButton = FBSDKLoginButton()
     var twLoginButton = TWTRLogInButton()
+    var background: CAGradientLayer!
     
     @IBOutlet weak var titleLabel: TitleLabel!
     @IBOutlet weak var closeButton: AnimatableButton!
@@ -28,7 +29,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // Set background
         // view.backgroundColor = MightyMetUI.darkBlue
-        let background = Gradients(colorString: "blue").getGradient()
+        background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)
         
@@ -38,6 +39,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         setupFacebookButton()
         setupTwitterButton()
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        background.frame = self.view.bounds
     }
 
     override func didReceiveMemoryWarning() {

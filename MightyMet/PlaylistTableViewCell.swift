@@ -12,8 +12,11 @@ class PlaylistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var playButton: PlayButton!
     
-    var tempo: String = ""
+    var tempo: Int = 0
     var subdivision: String = ""
+    var key: String = ""
+    var signature: Int = 0
+    var note: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()

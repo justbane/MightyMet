@@ -15,17 +15,26 @@ class AddPlaylistViewController: AuthenticatedViewController {
     
     @IBOutlet weak var titleLabel: TitleLabel!
     @IBOutlet weak var closeButton: AnimatableButton!
+    @IBOutlet weak var saveButton: AnimatableButton!
+    @IBOutlet weak var nameField: AnimatableTextField!
+    @IBOutlet weak var bpmLabel: UILabel!
+    @IBOutlet weak var timeSigLabel: UILabel!
+    @IBOutlet weak var subdivLabel: UILabel!
     
+    var ref: FIRDatabaseReference?
     var mainMetronome: Metronome!
+    var background: CAGradientLayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        ref = FIRDatabase.database().reference()
+        
         // Set background
         // view.backgroundColor = MightyMetUI.darkBlue
-        let background = Gradients(colorString: "blue").getGradient()
+        background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)
         
@@ -36,6 +45,14 @@ class AddPlaylistViewController: AuthenticatedViewController {
         if FIRAuth.auth()?.currentUser == nil {
             super.showLogin()
         }
+        
+        bpmLabel.text = "BPM: \(mainMetronome.getFrequency())"
+        timeSigLabel.text = "Time Signature: \(mainMetronome.signature)/\(mainMetronome.note)"
+        subdivLabel.text = "Subdivision: \(mainMetronome.getTextFromDivisor())s"
+    }
+    
+    override func viewWillLayoutSubviews() {
+        background.frame = self.view.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,14 +64,25 @@ class AddPlaylistViewController: AuthenticatedViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func pressSaveButton(_ sender: Any) {
+        if let name = nameField.text {
+            let data: [String: Any] = [
+                "name": name,
+                "subdivision": mainMetronome.getTextFromDivisor(),
+                "tempo": mainMetronome.getFrequency(),
+                "signature": mainMetronome.signature,
+                "note": mainMetronome.note
+            ]
+            ref?.child("Playlists").child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(data, withCompletionBlock: { (error, firebase) in
+                if error == nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            
+        } else {
+            // Throw error
+            return
+        }
     }
-    */
-
+    
 }

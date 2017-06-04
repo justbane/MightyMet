@@ -14,6 +14,7 @@ class Metronome {
     var frequency: Double = 88.0
     var divisor: Double = 1.0
     var signature = 4
+    var note = 4
     var isRunning: Bool = false
     
     var one = AudioEngine(sound: "clave-high")
@@ -52,16 +53,18 @@ class Metronome {
                     }
                     
                     // Check/reset the count
-                    if self.divisor == 2.0 // Working with odd eiths times
+                    if self.divisor == 2.0 // Working with odd eigths times
                         && self.signature > 4
-                        && (self.signature % 2) == 1 {
+                        && (self.signature % 2) == 1
+                        && self.note == 8 {
                         if count == self.signature {
                             count = 1
                         } else {
                             count += 1
                         }
-                    } else if self.divisor == 3.0 // Working with 6/8 time
-                        && self.signature == 6 {
+                    } else if self.divisor == 3.0 // Working with 6/8 or 12/8 time
+                        && (self.signature == 6 || self.signature == 12)
+                        && self.note == 8 {
                         if count == self.signature {
                             count = 1
                         } else {
@@ -94,7 +97,7 @@ class Metronome {
     }
     
     func getFrequency() -> Double {
-        return self.frequency
+        return self.frequency.rounded()
     }
     
     // MARK: Set divisor
@@ -118,8 +121,35 @@ class Metronome {
         }
     }
     
+    func getTextFromDivisor() -> String {
+        
+        switch divisor {
+        case 1.0:
+            return "quarter"
+        case 2.0:
+            return "eighth"
+        case 3.0:
+            return "triplet"
+        case 4.0:
+            return "sixteenth"
+        default:
+            return "quarter"
+        }
+        
+    }
+    
     func setSound(_ value: Double) {
         // TODO: Set sounds
+    }
+    
+    func setSignature(signature: String) {
+        
+        if let index = signature.characters.index(of: "/") {
+            self.signature = Int(signature.substring(to: index))!
+            self.note = Int(signature.substring(from: index).trimmingCharacters(in: CharacterSet(charactersIn: "/")))!
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resetDivButtons"), object: nil, userInfo: ["signature":signature])
+        }
+        
     }
     
     func stop (completion: @escaping (_ running: Bool) -> Void) {
