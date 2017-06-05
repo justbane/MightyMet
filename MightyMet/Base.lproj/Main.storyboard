@@ -558,10 +558,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHJ-PO-tn0" customClass="TitleLabel" customModule="MightyMet">
-                                <rect key="frame" x="24" y="28" width="288" height="54"/>
+                                <rect key="frame" x="24" y="28" width="272" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="IHE-2v-NmG"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="fHH-Nj-iil"/>
                                     <constraint firstAttribute="height" constant="54" id="pVg-om-pRG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -635,11 +634,11 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk7-xs-KeS" id="edQ-GR-Lms">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="95.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="re2-jj-0a7">
-                                                    <rect key="frame" x="98" y="10" width="422" height="38"/>
+                                                    <rect key="frame" x="98" y="10" width="182" height="38"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="tTd-49-owm"/>
                                                     </constraints>
@@ -648,7 +647,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjv-OM-Qu4">
-                                                    <rect key="frame" x="98" y="56" width="422" height="21"/>
+                                                    <rect key="frame" x="98" y="56" width="182" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="pRm-yT-uNw"/>
                                                     </constraints>
@@ -993,10 +992,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MT-4T-fbb" customClass="TitleLabel" customModule="MightyMet">
-                                <rect key="frame" x="24" y="28" width="288" height="54"/>
+                                <rect key="frame" x="24" y="28" width="272" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="WUv-oi-cMS"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="haC-Zd-c2p"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1037,7 +1035,6 @@
                             <constraint firstItem="Yiz-8N-aAZ" firstAttribute="leading" secondItem="Aey-g2-d9X" secondAttribute="leadingMargin" id="F7G-SA-FTc"/>
                             <constraint firstItem="eQT-4o-R2d" firstAttribute="top" secondItem="Yiz-8N-aAZ" secondAttribute="bottom" constant="20" id="H6L-1w-6ml"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6MT-4T-fbb" secondAttribute="trailing" constant="8" id="bPG-Y4-bLz"/>
-                            <constraint firstItem="6MT-4T-fbb" firstAttribute="leading" secondItem="Aey-g2-d9X" secondAttribute="leadingMargin" constant="8" id="zb6-Ht-Fni"/>
                         </constraints>
                     </view>
                     <connections>

@@ -47,17 +47,17 @@ class Metronome {
                     // Play proper sound
                     if count % Int(self.divisor) == 1 {
                         if count == 1 {
-                            self.playSound(which: 0)
+                            self.playSound(one: true)
                         } else {
-                            self.playSound(which: self.whichClick)
+                            self.playSound(one: false)
                         }
                     } else {
                         if count == 1 {
-                            self.playSound(which: 0)
+                            self.playSound(one: true)
                         } else if self.divisor == 1.0 && count > 1 {
-                            self.playSound(which: self.whichClick)
+                            self.playSound(one: false)
                         } else {
-                            self.playSound(which: self.whichClick, low: true)
+                            self.playSound(one: false, low: true)
                         }
                         
                     }
@@ -93,44 +93,48 @@ class Metronome {
         
     }
     
-    func playSound(which: Int, low: Bool = false) {
-        switch whichClick {
-        case 1:
-            if !low {
-                self.clickOne.playSound(withFlash: true)
-            } else {
-                self.clickOneLow.playSound(withFlash: false)
+    func playSound(one: Bool, low: Bool = false) {
+        if one {
+            self.one.playSound(withFlash: true)
+        } else {
+            switch whichClick {
+            case 1:
+                if !low {
+                    self.clickOne.playSound(withFlash: true)
+                } else {
+                    self.clickOneLow.playSound(withFlash: false)
+                }
+                
+            case 2:
+                if !low {
+                    self.clickTwo.playSound(withFlash: true)
+                } else {
+                    self.clickTwoLow.playSound(withFlash: false)
+                }
+                
+            case 3:
+                if !low {
+                    self.clickThree.playSound(withFlash: true)
+                } else {
+                    self.clickThreeLow.playSound(withFlash: false)
+                }
+                
+            case 4:
+                if !low {
+                    self.clickFour.playSound(withFlash: true)
+                } else {
+                    self.clickFourLow.playSound(withFlash: false)
+                }
+                
+            default:
+                self.one.playSound(withFlash: true)
             }
             
-        case 2:
-            if !low {
-                self.clickTwo.playSound(withFlash: true)
+            if whichClick == 4 {
+                whichClick = 1
             } else {
-                self.clickTwoLow.playSound(withFlash: false)
+                whichClick += 1
             }
-
-        case 3:
-            if !low {
-                self.clickThree.playSound(withFlash: true)
-            } else {
-                self.clickThreeLow.playSound(withFlash: false)
-            }
-
-        case 4:
-            if !low {
-                self.clickFour.playSound(withFlash: true)
-            } else {
-                self.clickFourLow.playSound(withFlash: false)
-            }
-
-        default:
-            self.one.playSound(withFlash: true)
-        }
-        
-        if whichClick == 4 {
-            whichClick = 1
-        } else {
-            whichClick += 1
         }
     }
     
