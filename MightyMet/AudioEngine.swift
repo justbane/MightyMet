@@ -24,7 +24,7 @@ struct AudioEngine {
             try session.setCategory(AVAudioSessionCategoryPlayback)
             try session.setActive(true)
         } catch {
-            print("Error setting secssion category and activating session")
+            print("Error setting session category and activating session")
         }
         
         self.engine = AVAudioEngine()
@@ -79,8 +79,14 @@ struct AudioEngine {
         }
         
         // Schedule the file then play it
-        audioPlayerNode.scheduleFile(file, at: nil, completionHandler: nil)
-        audioPlayerNode.play()
+        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
+            .async {
+                
+                self.audioPlayerNode.scheduleFile(self.file, at: nil, completionHandler: nil)
+                self.audioPlayerNode.play()
+                
+        }
+        
     }
     
 }
