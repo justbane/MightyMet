@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Do any additional setup after loading the view.
         
         // Set background
-        // view.backgroundColor = MightyMetUI.darkBlue
+        self.view.backgroundColor = MightyMetUI.darkBlue
         background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)

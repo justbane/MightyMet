@@ -11,7 +11,7 @@ import IBAnimatable
 import FirebaseAuth
 import FirebaseDatabase
 
-class AddPlaylistViewController: AuthenticatedViewController {
+class AddPlaylistViewController: AuthenticatedViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: TitleLabel!
     @IBOutlet weak var closeButton: AnimatableButton!
@@ -33,12 +33,14 @@ class AddPlaylistViewController: AuthenticatedViewController {
         ref = FIRDatabase.database().reference()
         
         // Set background
-        // view.backgroundColor = MightyMetUI.darkBlue
+        self.view.backgroundColor = MightyMetUI.darkBlue
         background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)
         
-        titleLabel.labelText = "Add Settings"
+        titleLabel.labelText = "ADD SONG SETTINGS"
+        
+        nameField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +55,11 @@ class AddPlaylistViewController: AuthenticatedViewController {
     
     override func viewWillLayoutSubviews() {
         background.frame = self.view.bounds
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameField.resignFirstResponder()
+        return true
     }
 
     override func didReceiveMemoryWarning() {

@@ -98,19 +98,13 @@ class Metronome {
             self.one.playSound(withFlash: true)
         } else {
             switch whichClick {
-            case 1:
-                if !low {
-                    self.clickOne.playSound(withFlash: true)
-                } else {
-                    self.clickOneLow.playSound(withFlash: false)
-                }
-                
             case 2:
                 if !low {
                     self.clickTwo.playSound(withFlash: true)
                 } else {
                     self.clickTwoLow.playSound(withFlash: false)
                 }
+                whichClick = 3
                 
             case 3:
                 if !low {
@@ -118,6 +112,7 @@ class Metronome {
                 } else {
                     self.clickThreeLow.playSound(withFlash: false)
                 }
+                whichClick = 4
                 
             case 4:
                 if !low {
@@ -125,15 +120,15 @@ class Metronome {
                 } else {
                     self.clickFourLow.playSound(withFlash: false)
                 }
+                whichClick = 1
                 
             default:
-                self.one.playSound(withFlash: true)
-            }
-            
-            if whichClick == 4 {
-                whichClick = 1
-            } else {
-                whichClick += 1
+                if !low {
+                    self.clickOne.playSound(withFlash: true)
+                } else {
+                    self.clickOneLow.playSound(withFlash: false)
+                }
+                whichClick = 2
             }
         }
     }

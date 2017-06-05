@@ -39,7 +39,7 @@ class PlaylistViewController: AuthenticatedViewController, UITableViewDelegate, 
         tableView.reloadData()
         
         // Set background
-        // view.backgroundColor = MightyMetUI.darkBlue
+        self.view.backgroundColor = MightyMetUI.darkBlue
         background = Gradients(colorString: "blue").getGradient()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, at: 0)
