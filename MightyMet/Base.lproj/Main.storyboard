@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,20 +19,20 @@
                         <viewControllerLayoutGuide type="bottom" id="LHw-pz-lbz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IB7-9N-BC5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jq5-t4-3cc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9yd-Dh-T3h">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiN-m7-BbI" customClass="AnimatableView" customModule="IBAnimatable">
-                                            <rect key="frame" x="16" y="60" width="288" height="281"/>
+                                            <rect key="frame" x="16" y="60" width="382" height="281"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a time signature" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w64-C9-G4q">
-                                                    <rect key="frame" x="75" y="16" width="138" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a time signature" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w64-C9-G4q">
+                                                    <rect key="frame" x="75" y="16" width="232" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="0d1-Ob-3xN"/>
                                                     </constraints>
@@ -41,13 +41,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-Y4-1k9">
-                                                    <rect key="frame" x="8" y="82" width="272" height="134"/>
+                                                    <rect key="frame" x="8" y="82" width="366" height="134"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="134" id="zC7-D4-I59"/>
                                                     </constraints>
                                                 </pickerView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXG-6k-wvs" customClass="AnimatableButton" customModule="IBAnimatable">
-                                                    <rect key="frame" x="101" y="224" width="86" height="37"/>
+                                                    <rect key="frame" x="148" y="224" width="86" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="Sd7-rc-iKW"/>
                                                         <constraint firstAttribute="width" constant="86" id="YHk-26-Bmi"/>
@@ -131,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAO-bI-R0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982.60869565217399" y="-604.07608695652175"/>
+            <point key="canvasLocation" x="986" y="-598"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -142,11 +142,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TU-ku-SOz" customClass="PlayButton" customModule="MightyMet">
-                                <rect key="frame" x="231" y="354" width="100" height="100"/>
+                                <rect key="frame" x="278" y="354" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="3CM-Zy-yrh"/>
@@ -173,7 +173,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-nh-aMp" customClass="PlaylistButton" customModule="MightyMet">
-                                <rect key="frame" x="-11" y="354" width="100" height="100"/>
+                                <rect key="frame" x="36" y="354" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="6Uz-Uu-apP"/>
@@ -201,7 +201,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-zX-a5Y" customClass="TapTempo" customModule="MightyMet" customModuleProvider="target">
-                                <rect key="frame" x="110" y="372" width="100" height="100"/>
+                                <rect key="frame" x="157" y="372" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Ss6-99-C2g"/>
@@ -232,7 +232,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Y-Mk-U1e" customClass="QuarterButton" customModule="MightyMet">
-                                <rect key="frame" x="21" y="491" width="66" height="62"/>
+                                <rect key="frame" x="68" y="607" width="66" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="2bo-5Y-u8Z"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRm-KB-BdO" customClass="EighthButton" customModule="MightyMet">
-                                <rect key="frame" x="95" y="491" width="66" height="62"/>
+                                <rect key="frame" x="142" y="659" width="66" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="2oL-Pt-png"/>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3T-YF-B6h" customClass="TripletButton" customModule="MightyMet">
-                                <rect key="frame" x="169" y="491" width="66" height="62"/>
+                                <rect key="frame" x="216" y="659" width="66" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="2yg-TK-33S"/>
@@ -313,7 +313,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhQ-dx-uTX" customClass="SixteenthButton" customModule="MightyMet">
-                                <rect key="frame" x="243" y="491" width="66" height="62"/>
+                                <rect key="frame" x="290" y="607" width="66" height="62"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="Tci-d3-UZK"/>
@@ -340,7 +340,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A38-uT-bri" customClass="BPMSelectorView" customModule="MightyMet">
-                                <rect key="frame" x="5" y="52" width="310" height="310"/>
+                                <rect key="frame" x="52" y="52" width="310" height="310"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAy-w1-lGl" customClass="TempoLight" customModule="MightyMet">
                                         <rect key="frame" x="193" y="32" width="85" height="85"/>
@@ -554,11 +554,11 @@
                         <viewControllerLayoutGuide type="bottom" id="r2M-bV-9fA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KDa-Qq-0vE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHJ-PO-tn0" customClass="TitleLabel" customModule="MightyMet">
-                                <rect key="frame" x="24" y="28" width="272" height="54"/>
+                                <rect key="frame" x="28" y="28" width="358" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="IHE-2v-NmG"/>
                                     <constraint firstAttribute="height" constant="54" id="pVg-om-pRG"/>
@@ -568,14 +568,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09z-f9-yAg" customClass="DividerLine" customModule="MightyMet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="460" width="288" height="12"/>
+                                <rect key="frame" x="20" y="628" width="374" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="ZRA-5h-8Ai"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-Sl-GQ2" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="16" y="490" width="62" height="58"/>
+                                <rect key="frame" x="20" y="658" width="62" height="58"/>
                                 <color key="backgroundColor" red="0.90604931119999998" green="0.2974625528" blue="0.234723866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="62" id="Ogq-uL-BOi"/>
@@ -601,7 +601,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wub-Hh-RAK" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="185" y="490" width="119" height="58"/>
+                                <rect key="frame" x="189" y="658" width="205" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="750" constant="174" id="FoE-kf-C1H"/>
                                     <constraint firstAttribute="height" constant="58" id="PvL-cF-AmU"/>
@@ -627,17 +627,17 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-hZ-L9Q">
-                                <rect key="frame" x="16" y="90" width="288" height="362"/>
+                                <rect key="frame" x="20" y="90" width="374" height="530"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playListCell" rowHeight="96" id="dk7-xs-KeS" customClass="PlaylistTableViewCell" customModule="MightyMet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="96"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dk7-xs-KeS" id="edQ-GR-Lms">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="96"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="95.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="re2-jj-0a7">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="re2-jj-0a7">
                                                     <rect key="frame" x="98" y="10" width="182" height="38"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="tTd-49-owm"/>
@@ -646,7 +646,7 @@
                                                     <color key="textColor" red="0.92434477810000004" green="0.94031184909999999" blue="0.94428306819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjv-OM-Qu4">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zjv-OM-Qu4">
                                                     <rect key="frame" x="98" y="56" width="182" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="pRm-yT-uNw"/>
@@ -683,7 +683,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lO-45-ukt" customClass="AdditionButton" customModule="MightyMet" customModuleProvider="target">
-                                <rect key="frame" x="100" y="490" width="58" height="58"/>
+                                <rect key="frame" x="104" y="658" width="58" height="58"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="CnA-ra-GcH"/>
@@ -730,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N39-xt-1aU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="122"/>
+            <point key="canvasLocation" x="986" y="122"/>
         </scene>
         <!--Add Playlist View Controller-->
         <scene sceneID="64Z-ky-7nf">
@@ -741,11 +741,11 @@
                         <viewControllerLayoutGuide type="bottom" id="fbL-cH-OV7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="83z-Kd-y9C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-DD-dF1" customClass="TitleLabel" customModule="MightyMet" customModuleProvider="target">
-                                <rect key="frame" x="24" y="28" width="272" height="54"/>
+                                <rect key="frame" x="28" y="28" width="358" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="5GR-Zc-i78"/>
                                 </constraints>
@@ -753,8 +753,8 @@
                                 <color key="textColor" red="0.92434477810000004" green="0.94031184909999999" blue="0.94428306819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Add a name to save the current settings as a song in your playlist." textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOu-iN-6sR">
-                                <rect key="frame" x="16" y="90" width="288" height="60"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Add a name to save the current settings as a song in your playlist." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZOu-iN-6sR">
+                                <rect key="frame" x="20" y="90" width="374" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="rPQ-Wf-ZJq">
@@ -769,7 +769,7 @@
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-3l-flq" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="16" y="501" width="62" height="58"/>
+                                <rect key="frame" x="20" y="669" width="62" height="58"/>
                                 <color key="backgroundColor" red="0.90604931119999998" green="0.2974625528" blue="0.234723866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="CA4-O2-vBb"/>
@@ -796,7 +796,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqG-qX-aTE" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="86" y="501" width="218" height="58"/>
+                                <rect key="frame" x="90" y="669" width="304" height="58"/>
                                 <color key="backgroundColor" red="0.33282780649999999" green="0.74200803039999996" blue="0.61252439020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="bob-Yd-z1C"/>
@@ -823,14 +823,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLt-pB-aq9" customClass="DividerLine" customModule="MightyMet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="481" width="288" height="12"/>
+                                <rect key="frame" x="20" y="649" width="374" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="gNx-hF-d1V"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Signature:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OU9-Ah-KNI">
-                                <rect key="frame" x="45" y="290" width="231" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Signature:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OU9-Ah-KNI">
+                                <rect key="frame" x="49" y="290" width="317" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="tsR-Yg-qHb">
                                         <variation key="heightClass=compact-widthClass=compact" constant="32"/>
@@ -842,7 +842,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Onj-uJ-Dnx" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                <rect key="frame" x="44" y="166" width="232" height="50"/>
+                                <rect key="frame" x="48" y="166" width="318" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="F0M-lg-QDA"/>
@@ -876,8 +876,8 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subdivision:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nwB-ml-kbY">
-                                <rect key="frame" x="44" y="340" width="231" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subdivision:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nwB-ml-kbY">
+                                <rect key="frame" x="48" y="340" width="317" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="CPT-dR-7MI">
                                         <variation key="heightClass=compact-widthClass=compact" constant="32"/>
@@ -888,8 +888,8 @@
                                 <color key="textColor" red="0.92434477810000004" green="0.94031184909999999" blue="0.94428306819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUI-E0-HCf">
-                                <rect key="frame" x="45" y="240" width="231" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CUI-E0-HCf">
+                                <rect key="frame" x="49" y="240" width="317" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="2ZO-bh-cyb">
                                         <variation key="heightClass=compact-widthClass=compact" constant="32"/>
@@ -977,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q4y-U4-nTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1819" y="122"/>
+            <point key="canvasLocation" x="1794" y="121"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ZO3-S9-Xg0">
@@ -988,11 +988,11 @@
                         <viewControllerLayoutGuide type="bottom" id="eQT-4o-R2d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Aey-g2-d9X">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MT-4T-fbb" customClass="TitleLabel" customModule="MightyMet">
-                                <rect key="frame" x="24" y="28" width="272" height="54"/>
+                                <rect key="frame" x="28" y="28" width="358" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="WUv-oi-cMS"/>
                                 </constraints>
@@ -1001,7 +1001,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yiz-8N-aAZ" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="16" y="490" width="288" height="58"/>
+                                <rect key="frame" x="20" y="658" width="374" height="58"/>
                                 <color key="backgroundColor" red="0.90604931119999998" green="0.2974625528" blue="0.234723866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="EAE-bm-76U"/>
