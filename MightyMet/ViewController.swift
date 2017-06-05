@@ -146,7 +146,7 @@ class ViewController: UIViewController {
     func flashTempo() {
         self.tempoLight.flash()
         // TODO: Implement background flash in settings
-        flashBG()
+        // flashBG()
     }
     
     @IBAction func pressPlayList(_ sender: PlaylistButton) {

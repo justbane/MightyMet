@@ -16,11 +16,21 @@ class Metronome {
     var signature = 4
     var note = 4
     var isRunning: Bool = false
+    var whichClick = 1
     
     var one = AudioEngine(sound: "clave-high")
     
     var clickOne = AudioEngine(sound: "clave")
     var clickOneLow = AudioEngine(sound: "clave-low")
+    
+    var clickTwo = AudioEngine(sound: "clave")
+    var clickTwoLow = AudioEngine(sound: "clave-low")
+    
+    var clickThree = AudioEngine(sound: "clave")
+    var clickThreeLow = AudioEngine(sound: "clave-low")
+    
+    var clickFour = AudioEngine(sound: "clave")
+    var clickFourLow = AudioEngine(sound: "clave-low")
     
     func generate() {
         
@@ -37,17 +47,17 @@ class Metronome {
                     // Play proper sound
                     if count % Int(self.divisor) == 1 {
                         if count == 1 {
-                            self.one.playSound(withFlash: true)
+                            self.playSound(which: 0)
                         } else {
-                            self.clickOne.playSound(withFlash: true)
+                            self.playSound(which: self.whichClick)
                         }
                     } else {
                         if count == 1 {
-                            self.one.playSound(withFlash: true)
+                            self.playSound(which: 0)
                         } else if self.divisor == 1.0 && count > 1 {
-                            self.clickOne.playSound(withFlash: true)
+                            self.playSound(which: self.whichClick)
                         } else {
-                            self.clickOneLow.playSound(withFlash: false)
+                            self.playSound(which: self.whichClick, low: true)
                         }
                         
                     }
@@ -81,6 +91,47 @@ class Metronome {
                 }
         }
         
+    }
+    
+    func playSound(which: Int, low: Bool = false) {
+        switch whichClick {
+        case 1:
+            if !low {
+                self.clickOne.playSound(withFlash: true)
+            } else {
+                self.clickOneLow.playSound(withFlash: false)
+            }
+            
+        case 2:
+            if !low {
+                self.clickTwo.playSound(withFlash: true)
+            } else {
+                self.clickTwoLow.playSound(withFlash: false)
+            }
+
+        case 3:
+            if !low {
+                self.clickThree.playSound(withFlash: true)
+            } else {
+                self.clickThreeLow.playSound(withFlash: false)
+            }
+
+        case 4:
+            if !low {
+                self.clickFour.playSound(withFlash: true)
+            } else {
+                self.clickFourLow.playSound(withFlash: false)
+            }
+
+        default:
+            self.one.playSound(withFlash: true)
+        }
+        
+        if whichClick == 4 {
+            whichClick = 1
+        } else {
+            whichClick += 1
+        }
     }
     
     func getBpm() -> Double {
