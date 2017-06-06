@@ -137,9 +137,9 @@ class PlaylistViewController: AuthenticatedViewController, UITableViewDelegate, 
         let frequency = Double(currentCell.tempo)
         let signature = currentCell.signature
         let note = currentCell.note
-        mainMetronomeView.metronome.setDivisor(divisor.Divisor)
         mainMetronomeView.metronome.setFrequency(frequency)
         mainMetronomeView.metronome.setSignature(signature: "\(signature)/\(note)")
+        mainMetronomeView.metronome.setDivisor(divisor.Divisor)
         
         // Set the view controller controls
         mainMetronomeView.BPMSelector.setBpmAngle(CGFloat(frequency))
