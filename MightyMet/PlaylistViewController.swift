@@ -144,7 +144,6 @@ class PlaylistViewController: AuthenticatedViewController, UITableViewDelegate, 
         // Set the view controller controls
         mainMetronomeView.BPMSelector.setBpmAngle(CGFloat(frequency))
         mainMetronomeView.BPMSelector.setBpmText(CGFloat(frequency))
-        mainMetronomeView.timeSignatureButton.titleLabel?.text = "\(signature)/\(note)"
         
         var isRunning = false
         if mainMetronomeView.metronome.isRunning {

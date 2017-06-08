@@ -38,7 +38,7 @@ class Metronome {
         var count = 1
         
         // Setup the Queue
-        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
+        DispatchQueue(label: "MightyMet", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
             .async {
                 
                 // Metronome loop
@@ -197,7 +197,8 @@ class Metronome {
         if let index = signature.characters.index(of: "/") {
             self.signature = Int(signature.substring(to: index))!
             self.note = Int(signature.substring(from: index).trimmingCharacters(in: CharacterSet(charactersIn: "/")))!
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resetDivButtons"), object: nil, userInfo: ["signature":signature])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resetDivButtons"), object: nil, userInfo: ["signature": signature])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setTimeSigButtonText"), object: nil, userInfo: ["signature": signature])
         }
         
     }

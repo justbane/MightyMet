@@ -57,7 +57,6 @@ class SetTimeViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         // set met signature
         let index = timePicker.selectedRow(inComponent: 0)
         mainMetronomeView.metronome.setSignature(signature: times[index])
-        mainMetronomeView.timeSignatureButton.titleLabel?.text = times[index]
         mainMetronomeView.metronome.stop { (running) in
             if !running {
                 self.mainMetronomeView.metronome.start(completion: { (running) in

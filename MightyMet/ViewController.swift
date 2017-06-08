@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sixteenthButton: SixteenthButton!
     @IBOutlet weak var tapTempoButton: TapTempo!
     @IBOutlet weak var timeSignatureButton: AnimatableButton!
+    @IBOutlet weak var tapAgainLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +58,13 @@ class ViewController: UIViewController {
         // MARK: Reset divisor buttons
         NotificationCenter.default.addObserver(self, selector: #selector(resetDivButtonState), name: NSNotification.Name(rawValue: "resetDivButtons"), object: nil)
         
+        // MARK: Set time sig button
+        NotificationCenter.default.addObserver(self, selector: #selector(setTimeSignatureButton), name: NSNotification.Name(rawValue: "setTimeSigButtonText"), object: nil)
+        
         // MARK: Set timer validity on WillResignActive
         // NotificationCenter.default.addObserver(self, selector: #selector(startStopMetronome), name: NSNotification.Name(rawValue: "appInactive"), object: nil)
+        
+        tapAgainLbl.isHidden = true
         
         // MARK: Init metronome
         metronome = Metronome()
@@ -187,8 +193,10 @@ class ViewController: UIViewController {
             })
             sender.firstPress = 0
             sender.secondPress = 0
+            tapAgainLbl.isHidden = true
         } else {
             sender.firstPress = Date().millisecondsSince1970
+            tapAgainLbl.isHidden = false
         }
         
         sender.setState()
@@ -214,6 +222,11 @@ class ViewController: UIViewController {
         eigthButton.setStateFromNotification(data["divisorValue"]!)
         tripletButton.setStateFromNotification(data["divisorValue"]!)
         sixteenthButton.setStateFromNotification(data["divisorValue"]!)
+    }
+    
+    func setTimeSignatureButton(signature: Notification) {
+        let data = signature.userInfo! as! [String:String]
+        timeSignatureButton.titleLabel?.text = data["signature"]
     }
     
     func resetDivButtonState(_ signature: Notification) {

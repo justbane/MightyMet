@@ -61,30 +61,30 @@ struct AudioEngine {
     }
     
     func playSound(withFlash: Bool){
-         
-        // Stop and reset the player node and engine
-        audioPlayerNode.stop()
-        engine.stop()
-        
-        // Start the engine
-        do {
-            try engine.start()
-        } catch {
-            print("Audio engine start failure")
-        }
-        
-        // Flash tempo light if necessary
-        if withFlash {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
-        }
         
         // Schedule the file then play it
-        DispatchQueue(label: "MightyMet", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
+        DispatchQueue(label: "MightyMet", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
             .async {
+                
+                // Stop and reset the player node and engine
+                self.audioPlayerNode.stop()
+                self.engine.stop()
+                
+                // Start the engine
+                do {
+                    try self.engine.start()
+                } catch {
+                    print("Audio engine start failure")
+                }
+                
+                // Flash tempo light if necessary
+                if withFlash {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+                }
+
                 
                 self.audioPlayerNode.scheduleFile(self.file, at: nil, completionHandler: nil)
                 self.audioPlayerNode.play()
-                
         }
         
     }
