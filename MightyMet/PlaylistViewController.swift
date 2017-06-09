@@ -99,10 +99,12 @@ class PlaylistViewController: AuthenticatedViewController, UITableViewDelegate, 
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch  let error as NSError {
-            print("Logout error: ", error)
+        if !(FIRAuth.auth()?.currentUser?.isAnonymous)! {
+            do {
+                try FIRAuth.auth()?.signOut()
+            } catch  let error as NSError {
+                print("Logout error: ", error)
+            }
         }
     }
     
