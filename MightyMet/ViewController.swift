@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         BPMSelector.setBpmText(88.0)
         
         // MARK: Setup the gesture for the bmp selector
-        let bpmRecognizer = XMCircleGestureRecognizer(midPoint: BPMSelector.center, innerRadius:100, outerRadius:140, target: self, action: #selector(rotateBPMGesture(recognizer:)))
+        let bpmRecognizer = XMCircleGestureRecognizer(midPoint: BPMSelector.center, innerRadius:80, outerRadius:140, target: self, action: #selector(rotateBPMGesture(recognizer:)))
         // Attach gesture to view
         self.view.addGestureRecognizer(bpmRecognizer)
         
