@@ -21,7 +21,7 @@ struct AudioEngine {
         
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(AVAudioSessionCategoryPlayback)
+            try session.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
             try session.setActive(true)
         } catch {
             print("Error setting session category and activating session")
