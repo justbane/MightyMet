@@ -69,7 +69,6 @@ class ViewController: UIViewController {
         // MARK: Init metronome
         metronome = Metronome()
         metronome.setDivisor(1.0)
-
     }
     
     override func viewWillLayoutSubviews() {

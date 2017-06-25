@@ -7,138 +7,74 @@
 //
 
 import Foundation
+import AudioKit
 
 class Metronome {
     
-    var timer: Timer! = nil
     var frequency: Double = 88.0
     var divisor: Double = 1.0
     var signature = 4
     var note = 4
     var isRunning: Bool = false
-    var whichClick = 1
     
-    var one = AudioEngine(sound: "clave-high")
+    var midi: AKMIDI
+    var clickSampler: AKMIDISampler
+    var mixer: AKMixer
+    var sequencer: AKSequencer
     
-    var clickOne = AudioEngine(sound: "clave")
-    var clickOneLow = AudioEngine(sound: "clave-low")
-    
-    var clickTwo = AudioEngine(sound: "clave")
-    var clickTwoLow = AudioEngine(sound: "clave-low")
-    
-    var clickThree = AudioEngine(sound: "clave")
-    var clickThreeLow = AudioEngine(sound: "clave-low")
-    
-    var clickFour = AudioEngine(sound: "clave")
-    var clickFourLow = AudioEngine(sound: "clave-low")
+    init() {
+        midi = AKMIDI()
+        clickSampler = AKMIDISampler()
+        mixer = AKMixer()
+        sequencer = AKSequencer()
+        
+        clickSampler.enableMIDI(midi.client, name: "Click midi in")
+        mixer.connect(clickSampler)
+        
+        let reverb = AKCostelloReverb(mixer)
+        let dryWetMixer = AKDryWetMixer(mixer, reverb, balance: 0.2)
+        AudioKit.output = dryWetMixer
+        AudioKit.start()
+    }
     
     func generate() {
         
-        // Set button state on divisor change
-        var count = 1
-        
-        // Setup the Queue
-        DispatchQueue(label: "MightyMet", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.main)
-            .async {
-                
-                // Metronome loop
-                self.timer = Timer.scheduledTimer(withTimeInterval: self.getBpm(), repeats: true) { (timer) in
-                    
-                    // Play proper sound
-                    if count % Int(self.divisor) == 1 {
-                        if count == 1 {
-                            self.playSound(one: true)
-                        } else {
-                            self.playSound(one: false)
-                        }
-                    } else {
-                        if count == 1 {
-                            self.playSound(one: true)
-                        } else if self.divisor == 1.0 && count > 1 {
-                            self.playSound(one: false)
-                        } else {
-                            self.playSound(one: false, low: true)
-                        }
-                        
-                    }
-                    
-                    // Check/reset the count
-                    if self.divisor == 2.0 // Working with odd eigths times
-                        && self.signature > 4
-                        && (self.signature % 2) == 1
-                        && self.note == 8 {
-                        if count == self.signature {
-                            count = 1
-                        } else {
-                            count += 1
-                        }
-                    } else if self.divisor == 3.0 // Working with 6/8 or 12/8 time
-                        && (self.signature == 6 || self.signature == 12)
-                        && self.note == 8 {
-                        if count == self.signature {
-                            count = 1
-                        } else {
-                            count += 1
-                        }
-                    } else { // Default even times and subdivisions
-                        if count < (self.signature * Int(self.divisor)) {
-                            count += 1
-                        } else {
-                            count = 1
-                        }
-                    }
-                    
-                }
-        }
-        
-    }
-    
-    func playSound(one: Bool, low: Bool = false) {
-        if one {
-            self.one.playSound(withFlash: true)
-        } else {
-            switch whichClick {
-            case 2:
-                if !low {
-                    self.clickTwo.playSound(withFlash: true)
-                } else {
-                    self.clickTwoLow.playSound(withFlash: false)
-                }
-                whichClick = 3
-                
-            case 3:
-                if !low {
-                    self.clickThree.playSound(withFlash: true)
-                } else {
-                    self.clickThreeLow.playSound(withFlash: false)
-                }
-                whichClick = 4
-                
-            case 4:
-                if !low {
-                    self.clickFour.playSound(withFlash: true)
-                } else {
-                    self.clickFourLow.playSound(withFlash: false)
-                }
-                whichClick = 1
-                
+        // Set the sound for the sequencer
+        setSound()
+        print(getDivisor())
+        // Remove any existing tracks
+        sequencer.tracks.removeAll()
+         // Generate tracks
+        let tracks = getDivisor()
+        for i in 0...tracks {
+            sequencer.newTrack()
+            sequencer.tracks[i].setMIDIOutput(clickSampler.midiIn)
+            switch i {
+            case 0:
+                sequencer.tracks[i].add(
+                    noteNumber: 72,
+                    velocity: 100,
+                    position: AKDuration(beats: (Double(i) / self.divisor)),
+                    duration: AKDuration(beats: (1.0 / self.divisor)),
+                    channel:1
+                )
             default:
-                if !low {
-                    self.clickOne.playSound(withFlash: true)
-                } else {
-                    self.clickOneLow.playSound(withFlash: false)
-                }
-                whichClick = 2
+                sequencer.tracks[i].add(
+                    noteNumber: 60,
+                    velocity: 100,
+                    position: AKDuration(beats: (Double(i) / self.divisor)),
+                    duration: AKDuration(beats: (1.0 / self.divisor)),
+                    channel:1
+                )
             }
         }
-    }
-    
-    func getBpm() -> Double {
-        let numberOfPlaces = 3.0
-        let multiplier = pow(10.0, numberOfPlaces)
-        let num = (60 / self.frequency) / self.divisor
-        let rounded = round(num * multiplier) / multiplier
-        return rounded
+        
+        sequencer.setLength(AKDuration(beats: Double(self.signature)))
+        sequencer.setTempo(self.frequency)
+        sequencer.enableLooping()
+        
+        sequencer.rewind()
+        sequencer.play()
     }
     
     // MARK: Get/set frequency
@@ -154,6 +90,10 @@ class Metronome {
     func setDivisor(_ value: Double) {
         self.divisor = value
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil, userInfo: ["divisorValue":value])
+    }
+    
+    func getDivisor() -> Int {
+        return Int(self.divisor * 4)
     }
     
     func getDivisorFromText(name: String) -> (Divisor: Double, Name: String) {
@@ -188,8 +128,12 @@ class Metronome {
         
     }
     
-    func setSound(_ value: Double) {
-        // TODO: Set sounds
+    func setSound() {
+        do {
+            try clickSampler.loadWav("clave")
+        } catch {
+            print("Error loading wav file")
+        }
     }
     
     func setSignature(signature: String) {
@@ -206,14 +150,14 @@ class Metronome {
     func stop (completion: @escaping (_ running: Bool) -> Void) {
         if isRunning {
             isRunning = false
-            timer.invalidate()
+            sequencer.stop()
         }
         completion(isRunning)
     }
     
     func start (completion: @escaping (_ running: Bool) -> Void) {
-        isRunning = true
         generate()
+        isRunning = true
         completion(isRunning)
     }
     
