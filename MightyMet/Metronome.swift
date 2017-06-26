@@ -65,11 +65,11 @@ class Metronome {
                 // Generate tracks
                 let tracks = self.getDivisorToTracks()
                 for i in 0...tracks {
-                    self.sequencer.newTrack()
-                    self.sequencer.tracks[i].setMIDIOutput(self.clickSampler.midiIn)
+                    let track = self.sequencer.newTrack()
+                    track?.setMIDIOutput(self.clickSampler.midiIn)
                     switch i {
                     case 0:
-                        self.sequencer.tracks[i].add(
+                        track?.add(
                             noteNumber: 67,
                             velocity: 100,
                             position: AKDuration(beats: (Double(i) / self.divisor)),
@@ -83,7 +83,7 @@ class Metronome {
                         if i % Int(self.divisor) == 0 {
                             velocity = 100
                         }
-                        self.sequencer.tracks[i].add(
+                        track?.add(
                             noteNumber: 60,
                             velocity: MIDIVelocity(velocity),
                             position: AKDuration(beats: (Double(i) / self.divisor)),

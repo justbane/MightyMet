@@ -25,14 +25,13 @@
 		397956B21EAF0C5800063CC1 /* AuthenticatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397956B11EAF0C5800063CC1 /* AuthenticatedViewController.swift */; };
 		397956B41EAF0F8200063CC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397956B31EAF0F8200063CC1 /* LoginViewController.swift */; };
 		398181981EA41122007ED5CF /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398181971EA41122007ED5CF /* TapTempo.swift */; };
-		39829D3A1E766A3F007DAC41 /* clave-low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D321E766A3F007DAC41 /* clave-low.wav */; };
 		39829D3B1E766A3F007DAC41 /* clave.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39829D331E766A3F007DAC41 /* clave.wav */; };
-		398A2E0A1EDB388C0050F167 /* clave-high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 398A2E091EDB388C0050F167 /* clave-high.wav */; };
 		399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043341E3F0B1400BC19EB /* PlayButton.swift */; };
 		399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043361E3F0C8100BC19EB /* PlaylistButton.swift */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
 		39B3D9531EE10C41007BB1FF /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D9521EE10C41007BB1FF /* SetTimeViewController.swift */; };
 		39B983291E3875A100BCAF89 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B983281E3875A100BCAF89 /* Gradients.swift */; };
+		39D4CEEB1F01CE23005BA868 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39D4CEEA1F01CE23005BA868 /* beep.wav */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
 		39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */; };
 		39E7BDE11E44E7F900E7DF8A /* TempoLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */; };
@@ -63,14 +62,13 @@
 		397956B11EAF0C5800063CC1 /* AuthenticatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedViewController.swift; sourceTree = "<group>"; };
 		397956B31EAF0F8200063CC1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		398181971EA41122007ED5CF /* TapTempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapTempo.swift; sourceTree = "<group>"; };
-		39829D321E766A3F007DAC41 /* clave-low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "clave-low.wav"; sourceTree = "<group>"; };
 		39829D331E766A3F007DAC41 /* clave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave.wav; sourceTree = "<group>"; };
-		398A2E091EDB388C0050F167 /* clave-high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "clave-high.wav"; sourceTree = "<group>"; };
 		399043341E3F0B1400BC19EB /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		399043361E3F0C8100BC19EB /* PlaylistButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistButton.swift; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		39B3D9521EE10C41007BB1FF /* SetTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		39B983281E3875A100BCAF89 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		39D4CEEA1F01CE23005BA868 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		39DC7C491E355F8700E0B849 /* BPMSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMSelectorView.swift; sourceTree = "<group>"; };
 		39E7BDE01E44E7F900E7DF8A /* TempoLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempoLight.swift; sourceTree = "<group>"; };
@@ -177,8 +175,7 @@
 		39FB259C1E3C73840008974F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				398A2E091EDB388C0050F167 /* clave-high.wav */,
-				39829D321E766A3F007DAC41 /* clave-low.wav */,
+				39D4CEEA1F01CE23005BA868 /* beep.wav */,
 				39829D331E766A3F007DAC41 /* clave.wav */,
 			);
 			name = Sounds;
@@ -270,13 +267,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				398A2E0A1EDB388C0050F167 /* clave-high.wav in Resources */,
+				39D4CEEB1F01CE23005BA868 /* beep.wav in Resources */,
 				39829D3B1E766A3F007DAC41 /* clave.wav in Resources */,
 				39628C211E3091A300900912 /* LaunchScreen.storyboard in Resources */,
 				39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */,
 				39628C1E1E3091A300900912 /* Assets.xcassets in Resources */,
 				39628C1C1E3091A300900912 /* Main.storyboard in Resources */,
-				39829D3A1E766A3F007DAC41 /* clave-low.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
