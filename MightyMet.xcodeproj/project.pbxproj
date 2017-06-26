@@ -31,7 +31,6 @@
 		399043351E3F0B1400BC19EB /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043341E3F0B1400BC19EB /* PlayButton.swift */; };
 		399043371E3F0C8100BC19EB /* PlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399043361E3F0C8100BC19EB /* PlaylistButton.swift */; };
 		39AAD4421E3320C9007EC2D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */; };
-		39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B2ED421E51829A004DFE28 /* AudioEngine.swift */; };
 		39B3D9531EE10C41007BB1FF /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B3D9521EE10C41007BB1FF /* SetTimeViewController.swift */; };
 		39B983291E3875A100BCAF89 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B983281E3875A100BCAF89 /* Gradients.swift */; };
 		39DC7C481E355D9600E0B849 /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */; };
@@ -70,7 +69,6 @@
 		399043341E3F0B1400BC19EB /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		399043361E3F0C8100BC19EB /* PlaylistButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistButton.swift; sourceTree = "<group>"; };
 		39AAD4411E3320C9007EC2D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		39B2ED421E51829A004DFE28 /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		39B3D9521EE10C41007BB1FF /* SetTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		39B983281E3875A100BCAF89 /* Gradients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		39DC7C471E355D9600E0B849 /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				39359D101E369EB6004D4CC0 /* Metronome.swift */,
-				39B2ED421E51829A004DFE28 /* AudioEngine.swift */,
 				391BD2081ED899F500981733 /* Subdivisions.swift */,
 			);
 			name = Classes;
@@ -369,7 +366,6 @@
 				39009B4C1E6D3FA100697FD9 /* SixteenthButton.swift in Sources */,
 				391BD2091ED899F500981733 /* Subdivisions.swift in Sources */,
 				3914684B1E34884800CFBB5D /* MightyMetUI.swift in Sources */,
-				39B2ED431E51829A004DFE28 /* AudioEngine.swift in Sources */,
 				39DC7C4A1E355F8700E0B849 /* BPMSelectorView.swift in Sources */,
 				39009B4E1E6D410F00697FD9 /* QuarterButton.swift in Sources */,
 				39ECB9FD1EA9CA8C00B6D704 /* PlaylistViewController.swift in Sources */,

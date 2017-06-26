@@ -21,14 +21,31 @@ class Metronome {
     var clickSampler: AKMIDISampler
     var mixer: AKMixer
     var sequencer: AKSequencer
+    var callbackInstrument: AKCallbackInstrument
     
     init() {
+        
+        do {
+            try AKSettings.setSession(category: AKSettings.SessionCategory.playback, with: AVAudioSessionCategoryOptions.mixWithOthers)
+        } catch {
+            print("Error setting audio session category")
+        }
+        
         midi = AKMIDI()
         clickSampler = AKMIDISampler()
         mixer = AKMixer()
         sequencer = AKSequencer()
         
-        clickSampler.enableMIDI(midi.client, name: "Click midi in")
+        // Setup callback instrument to fire functions on note plays
+        callbackInstrument = AKCallbackInstrument() { status, note, velocity in
+            switch status {
+            case .noteOn:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+            default: break
+            }
+        }
+        
+        clickSampler.enableMIDI(midi.client, name: "Click-midiIn")
         mixer.connect(clickSampler)
         
         let reverb = AKCostelloReverb(mixer)
@@ -41,40 +58,83 @@ class Metronome {
         
         // Set the sound for the sequencer
         setSound()
-        print(getDivisor())
-        // Remove any existing tracks
-        sequencer.tracks.removeAll()
-         // Generate tracks
-        let tracks = getDivisor()
-        for i in 0...tracks {
-            sequencer.newTrack()
-            sequencer.tracks[i].setMIDIOutput(clickSampler.midiIn)
-            switch i {
-            case 0:
-                sequencer.tracks[i].add(
-                    noteNumber: 72,
-                    velocity: 100,
-                    position: AKDuration(beats: (Double(i) / self.divisor)),
-                    duration: AKDuration(beats: (1.0 / self.divisor)),
-                    channel:1
-                )
-            default:
-                sequencer.tracks[i].add(
-                    noteNumber: 60,
-                    velocity: 100,
-                    position: AKDuration(beats: (Double(i) / self.divisor)),
-                    duration: AKDuration(beats: (1.0 / self.divisor)),
-                    channel:1
-                )
+        
+        // Remove existing tracks
+        clearTracks { (clear) in
+            if clear {
+                // Generate tracks
+                let tracks = self.getDivisorToTracks()
+                for i in 0...tracks {
+                    self.sequencer.newTrack()
+                    self.sequencer.tracks[i].setMIDIOutput(self.clickSampler.midiIn)
+                    switch i {
+                    case 0:
+                        self.sequencer.tracks[i].add(
+                            noteNumber: 67,
+                            velocity: 100,
+                            position: AKDuration(beats: (Double(i) / self.divisor)),
+                            duration: AKDuration(beats: 0.5),
+                            channel:1
+                        )
+                        break
+                        
+                    default:
+                        var velocity = 75
+                        if i % Int(self.divisor) == 0 {
+                            velocity = 100
+                        }
+                        self.sequencer.tracks[i].add(
+                            noteNumber: 60,
+                            velocity: MIDIVelocity(velocity),
+                            position: AKDuration(beats: (Double(i) / self.divisor)),
+                            duration: AKDuration(beats: 0.5),
+                            channel:1
+                        )
+                    }
+                }
+                
+                // Setup flasher tracks
+                for i in 0...self.signature {
+                    let callbackTrack = self.sequencer.newTrack()
+                    callbackTrack?.setMIDIOutput(self.callbackInstrument.midiIn)
+                    callbackTrack?.add(
+                        noteNumber: 0,
+                        velocity: 100,
+                        position: AKDuration(beats: Double(i)),
+                        duration: AKDuration(beats: 0.5),
+                        channel:1
+                    )
+                }
+                
+                // Figure out the length of the tracks based on the note
+                // and the signature for unique counted time signatures
+                // TODO: Make this better :)
+                var length: Double
+                switch self.note {
+                case 8:
+                    switch self.signature {
+                    case 6, 12:
+                        length = self.signature / 3
+                    default:
+                        length = self.signature / 2
+                    }
+                default:
+                    length = Double(self.signature)
+                }
+                self.sequencer.setLength(AKDuration(beats: length))
+                self.sequencer.setTempo(self.frequency)
+                self.sequencer.enableLooping()
+                self.sequencer.preroll()
+                self.sequencer.play()
             }
         }
-        
-        sequencer.setLength(AKDuration(beats: Double(self.signature)))
-        sequencer.setTempo(self.frequency)
-        sequencer.enableLooping()
-        
-        sequencer.rewind()
-        sequencer.play()
+    }
+    
+    func clearTracks(completion: @escaping (_ clear: Bool) -> Void) {
+        sequencer.tracks.forEach { (track) in
+            track.clear()
+        }
+        completion(true)
     }
     
     // MARK: Get/set frequency
@@ -92,8 +152,13 @@ class Metronome {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "metDivisorChange"), object: nil, userInfo: ["divisorValue":value])
     }
     
-    func getDivisor() -> Int {
-        return Int(self.divisor * 4)
+    func getDivisorToTracks() -> Int {
+        switch note {
+        case 8:
+            return Int(self.signature)
+        default:
+            return Int(self.divisor * self.signature)
+        }
     }
     
     func getDivisorFromText(name: String) -> (Divisor: Double, Name: String) {
@@ -151,6 +216,7 @@ class Metronome {
         if isRunning {
             isRunning = false
             sequencer.stop()
+            sequencer.rewind()
         }
         completion(isRunning)
     }
