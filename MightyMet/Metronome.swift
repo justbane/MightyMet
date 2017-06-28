@@ -17,24 +17,13 @@ class Metronome {
     var note = 4
     var isRunning: Bool = false
     
-    var midi: AKMIDI
-    var clickSampler: AKMIDISampler
-    var mixer: AKMixer
-    var sequencer: AKSequencer
-    var callbackInstrument: AKCallbackInstrument
+    let midi = AKMIDI()
+    let clickSampler = AKMIDISampler()
+    let sequencer = AKSequencer()
+    
+    let callbackInstrument: AKCallbackInstrument
     
     init() {
-        
-        do {
-            try AKSettings.setSession(category: AKSettings.SessionCategory.playback, with: AVAudioSessionCategoryOptions.mixWithOthers)
-        } catch {
-            print("Error setting audio session category")
-        }
-        
-        midi = AKMIDI()
-        clickSampler = AKMIDISampler()
-        mixer = AKMixer()
-        sequencer = AKSequencer()
         
         // Setup callback instrument to fire functions on note plays
         callbackInstrument = AKCallbackInstrument() { status, note, velocity in
@@ -46,11 +35,10 @@ class Metronome {
         }
         
         clickSampler.enableMIDI(midi.client, name: "Click-midiIn")
-        mixer.connect(clickSampler)
         
-        let reverb = AKCostelloReverb(mixer)
-        let dryWetMixer = AKDryWetMixer(mixer, reverb, balance: 0.2)
-        AudioKit.output = dryWetMixer
+        // TODO: Add mixer here later
+        
+        AudioKit.output = self.clickSampler
         AudioKit.start()
     }
     
@@ -73,7 +61,7 @@ class Metronome {
                             noteNumber: 67,
                             velocity: 100,
                             position: AKDuration(beats: (Double(i) / self.divisor)),
-                            duration: AKDuration(beats: 0.5),
+                            duration: AKDuration(beats: 1.0),
                             channel:1
                         )
                         break
@@ -87,7 +75,7 @@ class Metronome {
                             noteNumber: 60,
                             velocity: MIDIVelocity(velocity),
                             position: AKDuration(beats: (Double(i) / self.divisor)),
-                            duration: AKDuration(beats: 0.5),
+                            duration: AKDuration(beats: 1.0),
                             channel:1
                         )
                     }
@@ -101,7 +89,7 @@ class Metronome {
                         noteNumber: 0,
                         velocity: 100,
                         position: AKDuration(beats: Double(i)),
-                        duration: AKDuration(beats: 0.5),
+                        duration: AKDuration(beats: 1.0),
                         channel:1
                     )
                 }
@@ -124,7 +112,6 @@ class Metronome {
                 self.sequencer.setLength(AKDuration(beats: length))
                 self.sequencer.setTempo(self.frequency)
                 self.sequencer.enableLooping()
-                self.sequencer.preroll()
                 self.sequencer.play()
             }
         }
