@@ -290,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 881244d0eb20fb73d9e0462c3ee087a4e03dd89c c4dd761352933cc5f08c984b4d9c236de403fad80cc4ffe681475431a1a2a595";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 881244d0eb20fb73d9e0462c3ee087a4e03dd89c c4dd761352933cc5f08c984b4d9c236de403fad80cc4ffe681475431a1a2a595\n\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh\"";
 		};
 		D422001A9AF8CC46D111B338 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
