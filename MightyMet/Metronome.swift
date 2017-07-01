@@ -16,112 +16,47 @@ class Metronome {
     var signature = 4
     var note = 4
     var isRunning: Bool = false
+    var playOne: Bool = true
     
-    let midi = AKMIDI()
-    let clickSampler = AKMIDISampler()
-    let sequencer = AKSequencer()
-    
-    let callbackInstrument: AKCallbackInstrument
+    let met = AKMetronome()
     
     init() {
         
-        // Setup callback instrument to fire functions on note plays
-        callbackInstrument = AKCallbackInstrument() { status, note, velocity in
-            switch status {
-            case .noteOn:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
-            default: break
-            }
-        }
+        AKSettings.playbackWhileMuted = true
         
-        clickSampler.enableMIDI(midi.client, name: "Click-midiIn")
+        met.callback = {
+            // Flasher
+            self.flash(count: self.met.currentBeat)
+            self.setTone(count: self.met.currentBeat)
+        }
         
         // TODO: Add mixer here later
         
-        AudioKit.output = self.clickSampler
+        AudioKit.output = met
         AudioKit.start()
+        
     }
     
     func generate() {
         
-        // Set the sound for the sequencer
-        setSound()
+        met.tempo = frequency * divisor
         
-        // Remove existing tracks
-        clearTracks { (clear) in
-            if clear {
-                // Generate tracks
-                let tracks = self.getDivisorToTracks()
-                for i in 0...tracks {
-                    let track = self.sequencer.newTrack()
-                    track?.setMIDIOutput(self.clickSampler.midiIn)
-                    switch i {
-                    case 0:
-                        track?.add(
-                            noteNumber: 67,
-                            velocity: 100,
-                            position: AKDuration(beats: (Double(i) / self.divisor)),
-                            duration: AKDuration(beats: 1.0),
-                            channel:1
-                        )
-                        break
-                        
-                    default:
-                        var velocity = 75
-                        if i % Int(self.divisor) == 0 {
-                            velocity = 100
-                        }
-                        track?.add(
-                            noteNumber: 60,
-                            velocity: MIDIVelocity(velocity),
-                            position: AKDuration(beats: (Double(i) / self.divisor)),
-                            duration: AKDuration(beats: 1.0),
-                            channel:1
-                        )
-                    }
-                }
-                
-                // Setup flasher tracks
-                for i in 0...self.signature {
-                    let callbackTrack = self.sequencer.newTrack()
-                    callbackTrack?.setMIDIOutput(self.callbackInstrument.midiIn)
-                    callbackTrack?.add(
-                        noteNumber: 0,
-                        velocity: 100,
-                        position: AKDuration(beats: Double(i)),
-                        duration: AKDuration(beats: 1.0),
-                        channel:1
-                    )
-                }
-                
-                // Figure out the length of the tracks based on the note
-                // and the signature for unique counted time signatures
-                // TODO: Make this better :)
-                var length: Double
-                switch self.note {
-                case 8:
-                    switch self.signature {
-                    case 6, 12:
-                        length = self.signature / 3
-                    default:
-                        length = self.signature / 2
-                    }
-                default:
-                    length = Double(self.signature)
-                }
-                self.sequencer.setLength(AKDuration(beats: length))
-                self.sequencer.setTempo(self.frequency)
-                self.sequencer.enableLooping()
-                self.sequencer.play()
-            }
-        }
+        // Calculate the divisions and the tempo adjustments
+        calculateSubdivision()
+        
+        // Start the met
+        met.restart()
+        
     }
     
-    func clearTracks(completion: @escaping (_ clear: Bool) -> Void) {
-        sequencer.tracks.forEach { (track) in
-            track.clear()
+    func calculateSubdivision() {
+        
+        if (divisor == 2 || divisor == 3) && note == 8 {
+            met.subdivision = signature
+        } else {
+            met.subdivision = signature * Int(divisor)
         }
-        completion(true)
+        
     }
     
     // MARK: Get/set frequency
@@ -180,12 +115,32 @@ class Metronome {
         
     }
     
-    func setSound() {
-        do {
-            try clickSampler.loadWav("clave")
-        } catch {
-            print("Error loading wav file")
+    func flash(count: Int) {
+        if Int(divisor) == 1 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+            return
         }
+        
+        if count % Int(divisor) == 1 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tempoFlash"), object: nil, userInfo: nil)
+            return
+        }
+    }
+    
+    func setTone(count: Int) {
+        
+        if !playOne {
+            met.frequency1 = 783.991
+        } else {
+            met.frequency1 = 1567.98
+        }
+        
+        if (count - 1) > 1 && divisor > 1.0 && count % Int(divisor) == 1 {
+            met.frequency2 = 783.991
+        } else {
+            met.frequency2 = 1046.0
+        }
+        
     }
     
     func setSignature(signature: String) {
@@ -201,9 +156,9 @@ class Metronome {
     
     func stop (completion: @escaping (_ running: Bool) -> Void) {
         if isRunning {
+            met.stop()
+            met.reset()
             isRunning = false
-            sequencer.stop()
-            sequencer.rewind()
         }
         completion(isRunning)
     }
